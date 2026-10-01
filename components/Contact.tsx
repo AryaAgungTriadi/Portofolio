@@ -13,11 +13,15 @@ export default function Contact() {
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">Lokasi</p><p className="mt-3 text-sm">Labuan, Pandeglang, Banten</p></div>
           <div className="border-t border-white/10 pt-5">
             <p className="text-xs uppercase tracking-[0.15em] text-muted">Profil</p>
-            <a href="https://github.com/AryaAgungTriadi" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center gap-3 rounded-lg border border-white/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (tab baru)</span></a>
+            <div className="mt-3 flex flex-wrap gap-3">
+              <a href="https://github.com/AryaAgungTriadi" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-white/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (tab baru)</span></a>
+              <a href="https://www.linkedin.com/in/arya-agung-triadi-31ab79318" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-white/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">LinkedIn <span aria-hidden="true">↗</span><span className="sr-only"> (tab baru)</span></a>
+            </div>
           </div>
         </address>
       </div>
     </section>
   );
 }
+
 
