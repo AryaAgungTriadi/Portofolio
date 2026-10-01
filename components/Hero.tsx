@@ -13,7 +13,7 @@ export default function Hero() {
         <figure className="relative mx-auto w-full max-w-sm pb-5 pl-5 lg:max-w-none">
           <div aria-hidden="true" className="absolute inset-x-0 top-5 bottom-0 rounded-[2rem] border border-accent/30" />
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-surface">
-            <Image src="/images/arya.png" alt="Foto Arya Agung Triadi" width={1036} height={1354} preload sizes="(max-width: 1023px) 384px, 440px" className="aspect-[4/5] w-full object-cover object-top" />
+            <Image src="/images/arya-formal.png" alt="Foto Arya Agung Triadi" width={1086} height={1448} preload sizes="(max-width: 1023px) 384px, 440px" className="aspect-[4/5] w-full object-cover object-top" />
             <figcaption className="border-t border-white/10 p-5 sm:p-6">
               <p className="font-medium">Arya Agung Triadi</p>
               <p className="mt-2 text-sm text-muted">Web Development · UI/UX · Visual Creative</p>
@@ -24,3 +24,4 @@ export default function Hero() {
     </section>
   );
 }
+
