@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Achievements() {
   return (
     <section
@@ -29,7 +31,22 @@ export default function Achievements() {
             </dl>
           </div>
         </article>
+        <div className="mt-6 grid gap-6 md:grid-cols-2">
+          <figure className="overflow-hidden rounded-2xl border border-white/10 bg-surface">
+            <a href="/images/achievement-video.jpg" target="_blank" rel="noopener noreferrer" aria-label="Lihat sertifikat Juara III lomba video (tab baru)" className="block transition-opacity hover:opacity-90">
+              <Image src="/images/achievement-video.jpg" alt="Sertifikat Juara III lomba video Jambore Remaja untuk tim SMAN 3 Pandeglang" width={1588} height={1128} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full" />
+            </a>
+            <figcaption className="px-6 py-4 text-sm text-muted">Sertifikat Juara III lomba video</figcaption>
+          </figure>
+          <figure className="overflow-hidden rounded-2xl border border-white/10 bg-surface">
+            <a href="/images/achievement-team.jpg" target="_blank" rel="noopener noreferrer" aria-label="Lihat daftar anggota tim lomba video (tab baru)" className="block transition-opacity hover:opacity-90">
+              <Image src="/images/achievement-team.jpg" alt="Daftar anggota tim SMAN 3 Pandeglang, termasuk Arya Agung Triadi" width={1528} height={1093} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full" />
+            </a>
+            <figcaption className="px-6 py-4 text-sm text-muted">Daftar anggota tim SMAN 3 Pandeglang</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
   );
 }
+
