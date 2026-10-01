@@ -20,13 +20,15 @@ export default function About() {
             Selain mengembangkan web dan desain antarmuka, aku juga tertarik pada fotografi, videografi, serta editing visual. Aku berpengalaman dalam proyek teknologi dan konten kreatif, serta menggunakan berbagai tools digital untuk pengembangan sistem dan desain.
           </p>
           <div className="mt-9 rounded-2xl border border-white/10 bg-surface p-6 sm:p-8">
-            <p className="text-xs uppercase tracking-[0.2em] text-accent">Magang / Studi Independen · 2026</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-accent">Magang Mandiri · Batch 4</p>
             <p className="mt-4 text-lg leading-relaxed text-foreground">VINIX7 — Web Development &amp; UI/UX</p>
-            <p className="mt-3 text-sm leading-relaxed text-muted">Mengikuti program VINIX7 di bidang Web Development dan UI/UX. Bersama tim, aku mengembangkan Tradeplast sebagai platform pengelolaan sampah plastik berbasis reward digital. Pengalaman ini menghubungkan pembelajaran desain antarmuka dengan pengembangan aplikasi web menggunakan Next.js dan Supabase.</p>
+            <p className="mt-3 text-sm text-accent"><time dateTime="2026-02-23">23 Februari</time>–<time dateTime="2026-06-23">23 Juni 2026</time></p>
+            <p className="mt-3 text-sm leading-relaxed text-muted">Mengikuti program VINIX7 di bidang Web Development dan UI/UX. Bersama tim, aku mengembangkan Tradeplast sebagai platform pengelolaan sampah plastik berbasis reward digital. Pembelajaran mencakup riset pengguna, wireframing, desain UI dan prototype, implementasi web dengan Next.js dan Supabase, serta pengujian, quality assurance, dan deployment.</p>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
 
