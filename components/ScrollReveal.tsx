@@ -8,11 +8,13 @@ export default function ScrollReveal() {
     if (preference.matches || !window.IntersectionObserver) return;
 
     const animations = new Set<Animation>();
+    const running = new WeakSet<HTMLElement>();
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         const element = entry.target as HTMLElement;
-        observer.unobserve(element);
+        if (running.has(element)) continue;
+        running.add(element);
         const siblings = Array.from(element.parentElement?.children ?? []).filter((child) => child.matches("article, figure"));
         const delay = Math.max(0, siblings.indexOf(element) % 2) * 90;
         const animation = element.animate([
@@ -20,7 +22,8 @@ export default function ScrollReveal() {
           { opacity: 1, transform: "translateY(0)", filter: "blur(0)" },
         ], { duration: 600, delay, easing: "cubic-bezier(0.22, 1, 0.36, 1)", fill: "backwards" });
         animations.add(animation);
-        animation.finished.then(() => animations.delete(animation), () => animations.delete(animation));
+        const release = () => { animations.delete(animation); running.delete(element); };
+        animation.finished.then(release, release);
       }
     }, { threshold: 0, rootMargin: "0px 0px -32px 0px" });
 
