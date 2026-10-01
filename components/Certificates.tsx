@@ -20,7 +20,7 @@ export default function Certificates() {
         <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Bagian dari perjalanan.</h2>
         <p className="mt-5 max-w-xl leading-relaxed text-muted">Pengalaman sebagai panitia dan peserta dalam webinar, kuliah umum, serta visiting lecture.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {certificates.map((certificate) => (
+          {[...certificates].sort((a, b) => b.iso.localeCompare(a.iso)).map((certificate) => (
             <article key={certificate.image} className="overflow-hidden rounded-2xl border border-white/10 bg-surface transition-colors duration-200 hover:border-accent/30">
               <a href={certificate.image} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Lihat sertifikat ${certificate.title} (tab baru)`}>
                 <Image src={certificate.image} alt={`Sertifikat atas nama Arya Agung Triadi: ${certificate.title}`} width={certificate.width} height={certificate.height} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full transition-opacity group-hover:opacity-85" />
@@ -38,4 +38,5 @@ export default function Certificates() {
     </section>
   );
 }
+
 
