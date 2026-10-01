@@ -11,8 +11,13 @@ export default function Contact() {
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">Email</p><a href="mailto:aryaagungtriadi22@gmail.com" className="mt-2 inline-flex min-h-11 max-w-full items-center break-all text-base text-accent hover:underline sm:text-lg">aryaagungtriadi22@gmail.com</a></div>
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">Telepon</p><a href="tel:+6283841327394" className="mt-2 inline-flex min-h-11 items-center text-lg hover:text-accent">0838 4132 7394</a></div>
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">Lokasi</p><p className="mt-3 text-sm">Labuan, Pandeglang, Banten</p></div>
+          <div className="border-t border-white/10 pt-5">
+            <p className="text-xs uppercase tracking-[0.15em] text-muted">Profil</p>
+            <a href="https://github.com/AryaAgungTriadi" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center gap-3 rounded-lg border border-white/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">GitHub <span aria-hidden="true">↗</span><span className="sr-only"> (tab baru)</span></a>
+          </div>
         </address>
       </div>
     </section>
   );
 }
+
