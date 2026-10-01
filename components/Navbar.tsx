@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const links = [
   ["#home", "Beranda"], ["#about", "Tentang"], ["#skills", "Skills"],
@@ -12,6 +12,24 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("#home");
   const toggle = useRef<HTMLButtonElement>(null);
+  const menu = useRef<HTMLDivElement>(null);
+  const [indicator, setIndicator] = useState({ x: 0, y: 0, width: 0, height: 0 });
+
+  useLayoutEffect(() => {
+    const container = menu.current;
+    if (!container) return;
+    const measure = () => {
+      const selected = container.querySelector<HTMLAnchorElement>('[aria-current="location"]');
+      if (!selected || !container.getClientRects().length) return;
+      setIndicator({ x: selected.offsetLeft, y: selected.offsetTop, width: selected.offsetWidth, height: selected.offsetHeight });
+    };
+    measure();
+    const observer = new ResizeObserver(measure);
+    observer.observe(container);
+    for (const child of container.querySelectorAll("a")) observer.observe(child);
+    document.fonts.ready.then(measure);
+    return () => observer.disconnect();
+  }, [active, open]);
 
   useEffect(() => {
     let frame = 0;
@@ -48,11 +66,14 @@ export default function Navbar() {
       }}>
         <a href="#home" onClick={() => setOpen(false)} aria-label="Arya, beranda" className="inline-flex min-h-11 items-center rounded text-2xl font-bold tracking-tight transition-opacity hover:opacity-80">arya<span className="text-accent">.</span></a>
         <button ref={toggle} type="button" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen(!open)} className="min-h-11 rounded-lg border border-white/20 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent lg:hidden">{open ? "Tutup" : "Menu"}</button>
-        <div id="nav-links" className={`${open ? "flex" : "hidden"} max-h-[70dvh] w-full flex-col gap-1 overflow-y-auto pt-3 lg:flex lg:w-auto lg:flex-row lg:gap-1 lg:overflow-visible lg:pt-0`}>
+        <div ref={menu} id="nav-links" className={`${open ? "flex" : "hidden"} relative isolate max-h-[70dvh] w-full flex-col gap-1 overflow-y-auto pt-3 lg:flex lg:w-auto lg:flex-row lg:gap-1 lg:overflow-visible lg:pt-0`}>
+          <span aria-hidden="true" className="pointer-events-none absolute -z-10 rounded-lg bg-accent/10 transition-[transform,width,height] duration-300 ease-out motion-reduce:transition-none" style={{ transform: `translate(${indicator.x}px, ${indicator.y}px)`, width: indicator.width, height: indicator.height, top: 0, left: 0 }}>
+            <span className="absolute inset-x-3 bottom-1 h-px bg-accent" />
+          </span>
           {links.map(([href, label]) => (
-            <a key={href} href={href} aria-current={active === href ? "location" : undefined} onClick={() => setOpen(false)} className={`relative inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-sm transition-colors ${active === href ? "bg-accent/10 text-accent" : "text-muted hover:bg-white/5 hover:text-foreground"}`}>
+            <a key={href} href={href} aria-current={active === href ? "location" : undefined} onClick={() => setOpen(false)} className={`relative inline-flex min-h-11 items-center rounded-lg px-3 py-2 text-sm transition-colors ${active === href ? "text-accent" : "text-muted hover:bg-white/5 hover:text-foreground"}`}>
               {label}
-              <span aria-hidden="true" className={`absolute inset-x-3 bottom-1 h-px bg-accent transition-opacity ${active === href ? "opacity-100" : "opacity-0"}`} />
+
             </a>
           ))}
         </div>
