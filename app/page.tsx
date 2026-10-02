@@ -12,11 +12,13 @@ import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import ScrollReveal from "@/components/ScrollReveal";
 import Guestbook from "@/components/Guestbook";
+import PageEntrance from "@/components/PageEntrance";
 
 export default function Home() {
   const { t } = useLanguage();
   return (
     <>
+      <PageEntrance />
       <a href="#main-content" className="sr-only fixed top-3 left-3 z-[100] rounded-lg bg-accent px-4 py-3 text-on-accent focus:not-sr-only">{t("Lewati navigasi")}</a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>

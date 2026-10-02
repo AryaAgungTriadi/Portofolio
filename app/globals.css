@@ -112,3 +112,9 @@ input.simple-field:-webkit-autofill:focus { -webkit-text-fill-color: var(--palet
 .guestbook-message { border-radius: .75rem; transition: background-color 300ms ease, box-shadow 300ms ease; }
 .guestbook-message[data-highlighted="true"] { background: color-mix(in srgb, var(--palette-accent) 12%, transparent); box-shadow: 0 0 0 6px color-mix(in srgb, var(--palette-accent) 12%, transparent); }
 .guestbook-message:focus { outline: none; }
+
+/* Fallback keeps content visible if JavaScript is unavailable. */
+.page-entrance { animation: entrance-fallback 0s 5s forwards; }
+.page-entrance[hidden] { display: none; }
+@keyframes entrance-fallback { to { visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .page-entrance { display: none; } }
