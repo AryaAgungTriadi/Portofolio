@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 const certificates = [
+  { title: "Magang Mandiri VINIX7 — Web Development dan UI/UX", date: "23 Juni 2026", iso: "2026-06-23", image: "/images/certificate-vinix7.jpg", width: 1432, height: 1012, role: "Peserta / MSIB Batch 4", pdf: "/documents/certificate-vinix7.pdf" },
   { title: "The Future of Web Developer and IoT Engineer", date: "9 September 2023", iso: "2023-09-09", image: "/images/certificate-web.jpg", width: 877, height: 620, role: "Panitia / Webinar" },
   { title: "CyberAware: Jaga Data, Lindungi Privasi", date: "13 Juni 2025", iso: "2025-06-13", image: "/images/certificate-cyber.jpg", width: 1053, height: 745, role: "Panitia / Webinar" },
   { title: "Cyber Security: Culture and Society", date: "9 Desember 2023", iso: "2023-12-09", image: "/images/certificate-extra-0.jpg", width: 1682, height: 1190, role: "Peserta / Webinar" },
@@ -18,18 +19,18 @@ export default function Certificates() {
       <div className="border-t border-white/10 pt-10">
         <p className="text-xs uppercase tracking-[0.24em] text-accent">05 / Sertifikat</p>
         <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Bagian dari perjalanan.</h2>
-        <p className="mt-5 max-w-xl leading-relaxed text-muted">Pengalaman sebagai panitia dan peserta dalam webinar, kuliah umum, serta visiting lecture.</p>
+        <p className="mt-5 max-w-xl leading-relaxed text-muted">Pengalaman magang, serta kegiatan sebagai panitia dan peserta dalam webinar, kuliah umum, dan visiting lecture.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[...certificates].sort((a, b) => b.iso.localeCompare(a.iso)).map((certificate) => (
             <article key={certificate.image} className="overflow-hidden rounded-2xl border border-white/10 bg-surface transition-colors duration-200 hover:border-accent/30">
-              <a href={certificate.image} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Lihat sertifikat ${certificate.title} (tab baru)`}>
+              <a href={certificate.pdf ?? certificate.image} target="_blank" rel="noopener noreferrer" className="group block" aria-label={`Lihat sertifikat ${certificate.title} (tab baru)`}>
                 <Image src={certificate.image} alt={`Sertifikat atas nama Arya Agung Triadi: ${certificate.title}`} width={certificate.width} height={certificate.height} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full transition-opacity group-hover:opacity-85" />
               </a>
               <div className="p-6 sm:p-7">
                 <p className="text-xs uppercase tracking-[0.18em] text-accent">{certificate.role}</p>
                 <h3 className="mt-3 text-xl leading-snug font-semibold">{certificate.title}</h3>
                 <p className="mt-4 text-sm text-muted"><time dateTime={certificate.iso}>{certificate.date}</time></p>
-                <a href={certificate.image} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center gap-3 text-sm text-accent hover:underline">Lihat sertifikat <span aria-hidden="true">↗</span><span className="sr-only"> (tab baru)</span></a>
+                <a href={certificate.pdf ?? certificate.image} target="_blank" rel="noopener noreferrer" className="mt-5 inline-flex min-h-11 items-center gap-3 text-sm text-accent hover:underline">Lihat sertifikat <span aria-hidden="true">↗</span><span className="sr-only"> (tab baru)</span></a>
               </div>
             </article>
           ))}
