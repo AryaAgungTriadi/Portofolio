@@ -1,4 +1,7 @@
 export const translations: Record<string, string> = {
+  "Bahasa dan teknologi untuk web, database, dan aplikasi mobile dalam perjalanan belajarku.": "Languages and technologies for web, databases, and mobile apps throughout my learning journey.",
+  "Aku juga menggunakan SQL dan Supabase untuk pengelolaan data, serta pernah mengembangkan aplikasi mobile dengan Flutter dan Dart.": "I also use SQL and Supabase to manage data, and have developed mobile applications with Flutter and Dart.",
+
   "Lihat semua sertifikat": "View all certificates",
   "Tampilkan lebih sedikit": "Show less",
   "Database": "Database",

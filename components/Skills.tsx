@@ -6,18 +6,8 @@ import Typewriter from "./Typewriter";
 const skillGroups = [
   {
     title: "Pemrograman & Web",
-    description: "Bahasa dan teknologi dalam perjalanan belajarku.",
-    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML", "CSS", "JavaScript", "PHP", "Python", "Java", "C", "C++"],
-  },
-  {
-    title: "Database",
-    description: "Teknologi untuk menyimpan dan mengelola data aplikasi.",
-    items: ["SQL", "Supabase"],
-  },
-  {
-    title: "Pengembangan Mobile",
-    description: "Bahasa dan framework yang pernah digunakan untuk membangun aplikasi mobile.",
-    items: ["Flutter", "Dart"],
+    description: "Bahasa dan teknologi untuk web, database, dan aplikasi mobile dalam perjalanan belajarku.",
+    items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML", "CSS", "JavaScript", "PHP", "Python", "Java", "C", "C++", "SQL", "Supabase", "Flutter", "Dart"],
   },
   {
     title: "Desain & Editing",
