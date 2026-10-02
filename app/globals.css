@@ -45,3 +45,6 @@ body {
     transition-delay: 0s;
   }
 }
+.certificate-dialog[open] { animation: certificate-popup 220ms ease-out; }
+@keyframes certificate-popup { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+@media (prefers-reduced-motion: reduce) { .certificate-dialog[open] { animation: none; } }
