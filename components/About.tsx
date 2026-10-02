@@ -1,3 +1,4 @@
+import Typewriter from "./Typewriter";
 export default function About() {
   return (
     <section
@@ -9,7 +10,7 @@ export default function About() {
         <div>
           <p className="text-xs uppercase tracking-[0.24em] text-accent">01 / Tentang</p>
           <h2 id="about-title" className="mt-5 text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
-            Di balik<br />portfolio ini.
+            Di balik<br /><Typewriter words={["portfolio ini."]} />
           </h2>
         </div>
         <div>

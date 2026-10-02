@@ -1,3 +1,4 @@
+import Typewriter from "./Typewriter";
 const projects = [
   {
     name: "Taskly",
@@ -29,7 +30,7 @@ export default function Projects() {
       <div className="border-t border-foreground/10 pt-10">
         <p className="text-xs uppercase tracking-[0.24em] text-accent">03 / Proyek</p>
         <div className="mt-5 grid gap-5 md:grid-cols-2 md:items-end">
-          <h2 id="projects-title" className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">Dari ide,<br />menjadi karya.</h2>
+          <h2 id="projects-title" className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">Dari ide,<br /><Typewriter words={["menjadi karya."]} /></h2>
           <p className="max-w-md leading-relaxed text-muted">Dua proyek dari perjalanan belajarku: membangun aplikasi secara mandiri dan berkolaborasi bersama tim.</p>
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">

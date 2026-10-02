@@ -79,3 +79,8 @@ html[data-theme-ready] { transition: --palette-background 380ms ease, --palette-
 @media (prefers-reduced-motion: reduce) { html[data-theme-ready] { transition: none; } }
 
 @property --palette-on-accent { syntax: "<color>"; inherits: true; initial-value: #1f1f1f; }
+
+.typewriter-cursor { visibility: hidden; }
+.typewriter[data-typing="true"] .typewriter-cursor { visibility: visible; animation: typewriter-blink 800ms step-end infinite; }
+@keyframes typewriter-blink { 50% { opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .typewriter-cursor { display: none; } }

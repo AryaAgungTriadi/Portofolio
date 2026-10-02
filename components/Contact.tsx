@@ -1,10 +1,11 @@
+import Typewriter from "./Typewriter";
 export default function Contact() {
   return (
     <section id="contact" aria-labelledby="contact-title" className="mx-auto max-w-6xl px-6 pb-20 sm:pb-24 lg:px-10">
       <div className="grid gap-10 rounded-[2rem] border border-accent/20 bg-surface p-7 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:p-12">
         <div>
           <p className="text-xs uppercase tracking-[0.24em] text-accent">06 / Kontak</p>
-          <h2 id="contact-title" className="mt-5 text-3xl leading-tight font-semibold tracking-tight sm:text-5xl">Mari mulai<br />percakapan.</h2>
+          <h2 id="contact-title" className="mt-5 text-3xl leading-tight font-semibold tracking-tight sm:text-5xl">Mari mulai<br /><Typewriter words={["percakapan."]} /></h2>
           <p className="mt-6 max-w-md leading-relaxed text-muted">Punya ide proyek atau ingin berdiskusi tentang web, UI/UX, dan karya kreatif? Kamu bisa menghubungiku di sini.</p>
         </div>
         <address className="flex flex-col justify-center gap-6 not-italic">

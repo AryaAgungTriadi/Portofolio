@@ -1,5 +1,7 @@
 "use client";
 
+import Typewriter from "./Typewriter";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
@@ -38,7 +40,7 @@ export default function Certificates() {
     <section id="certificates" aria-labelledby="certificates-title" className="mx-auto max-w-6xl px-6 pb-20 sm:pb-24 lg:px-10">
       <div className="border-t border-foreground/10 pt-10">
         <p className="text-xs uppercase tracking-[0.24em] text-accent">05 / Sertifikat</p>
-        <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl">Bagian dari perjalanan.</h2>
+        <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl"><Typewriter words={["Bagian dari perjalanan."]} /></h2>
         <p className="mt-5 max-w-xl leading-relaxed text-muted">Pengalaman magang, serta kegiatan sebagai panitia dan peserta dalam webinar, kuliah umum, dan visiting lecture.</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[...certificates].sort((a, b) => b.iso.localeCompare(a.iso)).map((certificate) => (

@@ -1,3 +1,4 @@
+import Typewriter from "./Typewriter";
 
 
 export default function Achievements() {
@@ -10,7 +11,7 @@ export default function Achievements() {
       <div className="border-t border-foreground/10 pt-10">
         <p className="text-xs uppercase tracking-[0.24em] text-accent">04 / Prestasi</p>
         <h2 id="achievements-title" className="mt-5 text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
-          Berkarya bersama,<br />meraih pencapaian.
+          Berkarya bersama,<br /><Typewriter words={["meraih pencapaian."]} />
         </h2>
         <article aria-labelledby="video-award-title" className="mt-10 grid overflow-hidden rounded-2xl border border-foreground/10 bg-surface transition-colors duration-200 hover:border-accent/30 md:grid-cols-[1fr_2fr]">
           <div className="flex flex-col justify-between gap-8 border-b border-foreground/10 bg-accent/5 p-7 sm:p-9 md:border-r md:border-b-0">

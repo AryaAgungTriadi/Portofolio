@@ -1,3 +1,4 @@
+import Typewriter from "./Typewriter";
 const skillGroups = [
   {
     title: "Pemrograman & Web",
@@ -32,7 +33,7 @@ export default function Skills() {
         <p className="text-xs uppercase tracking-[0.24em] text-accent">02 / Skills</p>
         <div className="mt-5 grid gap-5 md:grid-cols-2 md:items-end">
           <h2 id="skills-title" className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
-            Bekal untuk<br />membangun karya.
+            Bekal untuk<br /><Typewriter words={["membangun karya."]} />
           </h2>
           <p className="max-w-md leading-relaxed text-muted">
             Dari pengembangan web dan UI/UX hingga konten visual, 3D, dan audio, berikut teknologi dan tools yang menjadi bagian dari perjalanan belajarku.
