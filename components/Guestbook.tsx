@@ -30,6 +30,22 @@ export default function Guestbook() {
   const [reply, setReply] = useState<Entry | null>(null);
   const [sending, setSending] = useState(false);
   const [status, setStatus] = useState("");
+  const [highlighted, setHighlighted] = useState<string | null>(null);
+  const messageNodes = useRef(new Map<string, HTMLElement>());
+  const highlightTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const scrollToLatest = useRef(false);
+  useEffect(() => () => { if (highlightTimer.current) clearTimeout(highlightTimer.current); }, []);
+  const jumpToMessage = (id: string) => {
+    const node = messageNodes.current.get(id);
+    if (!node || !list.current) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const top = list.current.scrollTop + node.getBoundingClientRect().top - list.current.getBoundingClientRect().top - 24;
+    list.current.scrollTo({ top, behavior: reduced ? "instant" : "smooth" });
+    node.focus({ preventScroll: true });
+    setHighlighted(id);
+    if (highlightTimer.current) clearTimeout(highlightTimer.current);
+    highlightTimer.current = setTimeout(() => setHighlighted(null), 1800);
+  };
   const dialog = useRef<HTMLDialogElement>(null);
   const message = useRef<HTMLTextAreaElement>(null);
   const list = useRef<HTMLDivElement>(null);
@@ -60,9 +76,10 @@ export default function Guestbook() {
         if (!response.ok) throw new Error();
         const data = await response.json();
         if (controller.signal.aborted) return;
-        const nearBottom = !list.current || list.current.scrollHeight - list.current.scrollTop - list.current.clientHeight < 100;
+        const nearBottom = scrollToLatest.current || !list.current || list.current.scrollHeight - list.current.scrollTop - list.current.clientHeight < 100;
         setEntries([...data.entries].sort((a: Entry,b: Entry) => Date.parse(a.created_at)-Date.parse(b.created_at)));
         setReady(data.ready); setError(false);
+        scrollToLatest.current = false;
         if (nearBottom) requestAnimationFrame(() => { if (list.current) list.current.scrollTop = list.current.scrollHeight; });
       } catch { if (!controller.signal.aborted) setError(true); }
       finally { if (!controller.signal.aborted) setLoading(false); }
@@ -99,8 +116,8 @@ export default function Guestbook() {
           <div className="mb-5 flex items-center justify-between gap-2 border-b border-foreground/10 pb-3 text-[11px] text-muted"><span className="font-semibold">{t("SEMUA PESAN")} <span className="ml-1 rounded bg-foreground/10 px-2 py-0.5">{entries.length}</span></span><span>{t("Chat: Lama → Baru")}</span><button type="button" aria-label={t("Muat ulang")} onClick={() => setRefresh(v=>v+1)} className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted transition-colors hover:bg-accent/10 hover:text-accent"><UiIcon name="refresh" className="size-4"/></button></div>
           {loading ? <p className="text-sm text-muted">{t("Memuat komentar...")}</p> : error ? <p role="alert" className="text-sm text-muted">{t("Komentar belum bisa dimuat. Coba muat ulang.")}</p> : !ready ? <p className="text-sm text-muted">{t("Buku Tamu sedang disiapkan. Kamu bisa menghubungi Arya lewat email dulu.")}</p> : !entries.length ? <p className="py-6 text-sm text-muted">{t("Belum ada komentar. Jadilah yang pertama menyapa!")}</p> : <div className="space-y-6">{entries.map(entry => {
             const parent = entries.find(item=>item.id===entry.parent_id);
-            return <article key={entry.id} className={"guestbook-message flex items-start gap-2.5 " + (entry.is_owner ? "flex-row-reverse" : "")}><span className="mt-6 shrink-0"><Avatar person={entry}/></span><div className={"min-w-0 max-w-[calc(100%-3.25rem)] " + (entry.is_owner ? "text-right" : "")}><div className={"mb-2 flex items-center gap-2 text-xs font-semibold " + (entry.is_owner ? "justify-end" : "")}>{entry.is_owner && <span className="rounded-full bg-accent px-2 py-0.5 text-[9px] text-on-accent">DEV</span>}<span className="break-words">{entry.name}</span><Provider provider={entry.provider}/></div><div className={"inline-block max-w-full rounded-2xl border px-4 py-3 text-left text-sm leading-relaxed " + (entry.is_owner ? "rounded-br-sm border-accent/30 bg-accent text-on-accent" : "rounded-bl-sm border-foreground/8 bg-background/70 shadow-sm")}>
-              {entry.parent_id && <p className="mb-2 border-l-2 border-current/30 pl-2 text-xs opacity-70">{t("Membalas")} {parent?.name ?? t("komentar sebelumnya")}<span className="block truncate">{parent?.message.slice(0,80)}</span></p>}
+            return <article key={entry.id} ref={node => { if (node) messageNodes.current.set(entry.id, node); else messageNodes.current.delete(entry.id); }} tabIndex={-1} data-highlighted={highlighted === entry.id} className={"guestbook-message flex items-start gap-2.5 " + (entry.is_owner ? "flex-row-reverse" : "")}><span className="mt-6 shrink-0"><Avatar person={entry}/></span><div className={"min-w-0 max-w-[calc(100%-3.25rem)] " + (entry.is_owner ? "text-right" : "")}><div className={"mb-2 flex items-center gap-2 text-xs font-semibold " + (entry.is_owner ? "justify-end" : "")}>{entry.is_owner && <span className="rounded-full bg-accent px-2 py-0.5 text-[9px] text-on-accent">DEV</span>}<span className="break-words">{entry.name}</span><Provider provider={entry.provider}/></div><div className={"inline-block max-w-full rounded-2xl border px-4 py-3 text-left text-sm leading-relaxed " + (entry.is_owner ? "rounded-br-sm border-accent/30 bg-accent text-on-accent" : "rounded-bl-sm border-foreground/8 bg-background/70 shadow-sm")}>
+              {entry.parent_id && <button type="button" disabled={!parent} aria-label={`${t("Lihat pesan dari")} ${parent?.name ?? t("komentar sebelumnya")}`} onClick={() => jumpToMessage(entry.parent_id!)} className="mb-2 block max-w-full cursor-pointer rounded-r-md border-l-2 border-current/30 px-2 py-1 text-left text-xs opacity-75 transition-opacity hover:opacity-100 disabled:cursor-default">{t("Membalas")} {parent?.name ?? t("komentar sebelumnya")}<span className="block truncate">{parent?.message.slice(0,80) ?? t("Pesan asal tidak tersedia.")}</span></button>}
               <p className="whitespace-pre-wrap break-words [overflow-wrap:anywhere]">{entry.message}</p></div><div className={"mt-1 flex flex-wrap items-center gap-2 text-[10px] text-muted " + (entry.is_owner ? "justify-end" : "")}><time dateTime={entry.created_at}>{new Date(entry.created_at).toLocaleString(language === "en" ? "en-GB" : "id-ID", {dateStyle:"medium",timeStyle:"short"})}</time><button type="button" disabled={!user} onClick={() => { setReply(entry); message.current?.focus(); }} className="min-h-11 cursor-pointer rounded-lg px-1 text-muted transition-colors hover:text-accent disabled:cursor-not-allowed disabled:opacity-50">↳ {t("Balas")}</button></div></div></article>;
           })}</div>}
         </div>
@@ -111,12 +128,12 @@ export default function Guestbook() {
             try { const response=await fetch("/api/guestbook",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({...Object.fromEntries(new FormData(form)),parentId:reply?.id??null})});
               if (response.status===429) {setStatus("Terlalu banyak kiriman. Coba lagi nanti.");return;}
               if (response.status===401) {setUser(null);setStatus("Sesi berakhir. Silakan masuk lagi.");return;}
-              if (!response.ok || !(await response.json()).pending) throw new Error();
-              setStatus("Terima kasih! Pesanmu tersimpan dan menunggu persetujuan Arya.");form.reset();setReply(null);
+              if (!response.ok || !(await response.json()).sent) throw new Error();
+              setStatus("Pesan berhasil dikirim!");form.reset();setReply(null);scrollToLatest.current=true;setRefresh(value=>value+1);
             } catch {setStatus("Pesan belum tersimpan. Silakan coba lagi.");} finally {setSending(false);}
           }}>
             {reply && <div className="mb-2 flex items-center justify-between gap-2 rounded-lg bg-accent/10 p-2 text-xs"><span>{t("Membalas")} {reply.name}</span><button type="button" onClick={()=>setReply(null)} className="min-h-8 cursor-pointer text-accent">{t("Batal")}</button></div>}
-            <label htmlFor="guest-message" className="sr-only">{t("Pesan")}</label><div className="flex items-end gap-2"><textarea ref={message} id="guest-message" name="message" required minLength={2} maxLength={1000} rows={2} disabled={!ready || sending} placeholder={t("Tulis sapaan atau masukanmu...")} className="simple-field min-w-0 flex-1 resize-none rounded-2xl border border-foreground/15 px-4 py-3 text-base placeholder:text-muted/70 sm:text-sm"/><button type="submit" aria-label={t("Kirim Komentar")} disabled={!ready || sending} className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-2xl bg-accent text-xl text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-40">{sending ? <span className="ui-spinner"/> : <UiIcon name="send" className="size-5"/>}</button></div><div className="hidden" aria-hidden="true"><input name="website" tabIndex={-1} autoComplete="off"/></div><p className="mt-2 text-[11px] text-muted">{t("Pesan tampil setelah disetujui Arya.")}</p>
+            <label htmlFor="guest-message" className="sr-only">{t("Pesan")}</label><div className="flex items-end gap-2"><textarea ref={message} id="guest-message" name="message" required minLength={2} maxLength={1000} rows={2} disabled={!ready || sending} placeholder={t("Tulis sapaan atau masukanmu...")} className="simple-field min-w-0 flex-1 resize-none rounded-2xl border border-foreground/15 px-4 py-3 text-base placeholder:text-muted/70 sm:text-sm"/><button type="submit" aria-label={t("Kirim Komentar")} disabled={!ready || sending} className="flex size-12 shrink-0 cursor-pointer items-center justify-center rounded-2xl bg-accent text-xl text-on-accent transition-colors hover:bg-accent-hover disabled:opacity-40">{sending ? <span className="ui-spinner"/> : <UiIcon name="send" className="size-5"/>}</button></div><div className="hidden" aria-hidden="true"><input name="website" tabIndex={-1} autoComplete="off"/></div><p className="mt-2 text-[11px] text-muted">{t("Pesan langsung tampil. Yuk, jaga percakapan tetap ramah.")}</p>
           </form> : <p className="py-2 text-center text-xs leading-relaxed text-muted">{t("Silakan login menggunakan GitHub atau Google untuk menulis pesan.")}</p>}
           {status && <p role="status" aria-live="polite" className="mt-3 rounded-xl border border-accent/20 bg-accent/5 p-3 text-xs leading-relaxed text-accent">{t(status)}</p>}
         </footer>

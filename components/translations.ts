@@ -1,4 +1,8 @@
 export const translations: Record<string, string> = {
+  "Pesan berhasil dikirim!": "Message sent!",
+  "Pesan langsung tampil. Yuk, jaga percakapan tetap ramah.": "Messages appear immediately. Keep the conversation friendly.",
+  "Lihat pesan dari": "View message from",
+  "Pesan asal tidak tersedia.": "The original message is unavailable.",
   "Kirim sebuah pesan": "Send a message",
   "Ide bagus dimulai dari sapaan.": "Great ideas start with a hello.",
   "jejak tersimpan": "published messages",

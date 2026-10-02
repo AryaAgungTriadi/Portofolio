@@ -108,3 +108,7 @@ input.simple-field:-webkit-autofill:hover,
 input.simple-field:-webkit-autofill:focus { -webkit-text-fill-color: var(--palette-foreground); -webkit-box-shadow: 0 0 0 1000px var(--palette-background) inset; caret-color: var(--palette-accent); }
 .subject-option:hover, .subject-option:focus, .subject-option:focus-visible { background: var(--palette-accent); color: var(--palette-on-accent); outline: none; }
 .subject-option[aria-selected="true"]:not(:focus):not(:hover) { background: color-mix(in srgb, var(--palette-accent) 12%, transparent); color: var(--palette-accent); }
+
+.guestbook-message { border-radius: .75rem; transition: background-color 300ms ease, box-shadow 300ms ease; }
+.guestbook-message[data-highlighted="true"] { background: color-mix(in srgb, var(--palette-accent) 12%, transparent); box-shadow: 0 0 0 6px color-mix(in srgb, var(--palette-accent) 12%, transparent); }
+.guestbook-message:focus { outline: none; }

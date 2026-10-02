@@ -24,7 +24,7 @@ export async function POST(request: Request) {
       if (!(await response.json()).length) throw new SubmissionError(400);
     }
     await limit(request, "guestbook");
-    await database("guestbook_entries", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify({ name, message, parent_id: parentId, approved: false, user_id: user.id, avatar_url: user.avatar_url, provider: user.provider, is_owner: user.is_owner }) });
-    return Response.json({ pending: true }, { status: 201 });
+    await database("guestbook_entries", { method: "POST", headers: { Prefer: "return=minimal" }, body: JSON.stringify({ name, message, parent_id: parentId, approved: true, user_id: user.id, avatar_url: user.avatar_url, provider: user.provider, is_owner: user.is_owner }) });
+    return Response.json({ sent: true }, { status: 201 });
   } catch (error) { return failure(error); }
 }
