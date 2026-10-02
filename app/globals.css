@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-on-accent: #1f1f1f;
+  --color-on-accent: var(--palette-on-accent);
   --color-background: var(--palette-background);
   --color-surface: var(--palette-surface);
   --color-foreground: var(--palette-foreground);
@@ -13,6 +13,7 @@
 }
 
 :root {
+  --palette-on-accent: #1f1f1f;
   --palette-background: #1f1f1f;
   --palette-surface: #272727;
   --palette-foreground: #faf7f2;
@@ -26,8 +27,9 @@ html[data-theme="light"] {
   --palette-surface: #f0ede7;
   --palette-foreground: #26231f;
   --palette-muted: #625e57;
-  --palette-accent: #ff944d;
-  --palette-accent-hover: #ffad77;
+  --palette-accent: #b94708;
+  --palette-accent-hover: #9e3b05;
+  --palette-on-accent: #faf7f2;
   color-scheme: light;
 }
 html {
@@ -40,7 +42,7 @@ body {
   color: var(--palette-foreground);
   font-family: var(--font-geist-sans), Arial, sans-serif;
 }
-::selection { background: var(--palette-accent); color: #1f1f1f; }
+::selection { background: var(--palette-accent); color: var(--palette-on-accent); }
 :focus-visible { outline: 2px solid var(--palette-accent); outline-offset: 5px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -73,5 +75,7 @@ body {
 @property --palette-muted { syntax: "<color>"; inherits: true; initial-value: #b5b2ad; }
 @property --palette-accent { syntax: "<color>"; inherits: true; initial-value: #ff944d; }
 @property --palette-accent-hover { syntax: "<color>"; inherits: true; initial-value: #ffad77; }
-html[data-theme-ready] { transition: --palette-background 380ms ease, --palette-surface 380ms ease, --palette-foreground 380ms ease, --palette-muted 380ms ease, --palette-accent 380ms ease, --palette-accent-hover 380ms ease; }
+html[data-theme-ready] { transition: --palette-background 380ms ease, --palette-surface 380ms ease, --palette-foreground 380ms ease, --palette-muted 380ms ease, --palette-accent 380ms ease, --palette-accent-hover 380ms ease, --palette-on-accent 380ms ease; }
 @media (prefers-reduced-motion: reduce) { html[data-theme-ready] { transition: none; } }
+
+@property --palette-on-accent { syntax: "<color>"; inherits: true; initial-value: #1f1f1f; }
