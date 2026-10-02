@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 
 const certificates = [
+  { title: "Juara III Lomba Video Jambore Remaja", date: "29 September 2022", iso: "2022-09-29", image: "/images/achievement-video.jpg", width: 1588, height: 1128, role: "Prestasi / Lomba Video", detailImage: "/images/achievement-team.jpg", detailWidth: 1528, detailHeight: 1093, description: "Tim SMAN 3 Pandeglang meraih Juara III kategori usia 15–19 tahun dalam lomba video Jambore Remaja bertema Remaja Sehat Bebas Anemia dan Stunting, yang diselenggarakan oleh Médecins Sans Frontières (MSF). Preview pertama menampilkan sertifikat penghargaan; preview kedua memuat daftar anggota tim, termasuk Arya Agung Triadi." },
   { title: "Magang Mandiri VINIX7 — Web Development dan UI/UX", date: "23 Juni 2026", iso: "2026-06-23", image: "/images/certificate-vinix7.jpg", width: 1432, height: 1012, role: "Peserta / MSIB Batch 4", pdf: "/documents/certificate-vinix7.pdf", detailImage: "/images/certificate-vinix7-details.jpg" },
   { title: "The Future of Web Developer and IoT Engineer", date: "9 September 2023", iso: "2023-09-09", image: "/images/certificate-web.jpg", width: 877, height: 620, role: "Panitia / Webinar" },
   { title: "CyberAware: Jaga Data, Lindungi Privasi", date: "13 Juni 2025", iso: "2025-06-13", image: "/images/certificate-cyber.jpg", width: 1053, height: 745, role: "Panitia / Webinar" },
@@ -68,10 +69,10 @@ export default function Certificates() {
           <p className="text-xs uppercase tracking-[0.18em] text-accent">{selected.role}</p>
           <h2 id="certificate-dialog-title" className="mt-3 text-2xl font-semibold sm:text-3xl">{selected.title}</h2>
           <p className="mt-3 text-sm text-muted"><time dateTime={selected.iso}>{selected.date}</time></p>
-          <p id="certificate-dialog-description" className="mt-4 leading-relaxed text-muted">{selected.pdf ? "Sertifikat penyelesaian Magang Mandiri MSIB Batch 4 di PT VINIX SEVEN AURUM, Divisi Web Dev UI/UX, pada 23 Februari–23 Juni 2026. Halaman kedua memuat jobdesk dan pencapaian, termasuk riset pengguna, desain antarmuka, prototyping, pengembangan web, dan deployment." : `Sertifikat atas nama Arya Agung Triadi sebagai ${selected.role.toLowerCase().replace(" / ", " dalam kegiatan ")} dengan topik “${selected.title}”.`}</p>
+          <p id="certificate-dialog-description" className="mt-4 leading-relaxed text-muted">{selected.description ?? (selected.pdf ? "Sertifikat penyelesaian Magang Mandiri MSIB Batch 4 di PT VINIX SEVEN AURUM, Divisi Web Dev UI/UX, pada 23 Februari–23 Juni 2026. Halaman kedua memuat jobdesk dan pencapaian, termasuk riset pengguna, desain antarmuka, prototyping, pengembangan web, dan deployment." : `Sertifikat atas nama Arya Agung Triadi sebagai ${selected.role.toLowerCase().replace(" / ", " dalam kegiatan ")} dengan topik “${selected.title}”.`)}</p>
           <div className="mt-6 space-y-4">
             <Image src={selected.image} alt={`Sertifikat ${selected.title}`} width={selected.width} height={selected.height} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />
-            {selected.detailImage && <Image src={selected.detailImage} alt="Jobdesk dan pencapaian Magang Mandiri VINIX7" width={1432} height={1012} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />}
+            {selected.detailImage && <Image src={selected.detailImage} alt={`Halaman detail pendukung: ${selected.title}`} width={selected.detailWidth ?? 1432} height={selected.detailHeight ?? 1012} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />}
           </div>
           <a href={selected.pdf ?? selected.image} download className="mt-6 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-accent-hover">Unduh sertifikat <span aria-hidden="true">↓</span></a>
         </div>
