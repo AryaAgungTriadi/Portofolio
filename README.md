@@ -2,7 +2,7 @@
 
 Portfolio personal Arya Agung Triadi, mahasiswa Informatika Universitas Sultan Ageng Tirtayasa dengan minat pada Web Development, UI/UX, serta karya visual. Dibangun dengan tema gelap dan aksen orange.
 
-**[Kunjungi portfolio →](https://portofolio-green-chi.vercel.app/)**
+**[Kunjungi portfolio →](https://portofolio-aryaagungtriadi.vercel.app/)**
 
 ## Fitur
 

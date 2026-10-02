@@ -23,6 +23,7 @@ const certificates = [
 
 export default function Certificates() {
   const { t } = useLanguage();
+  const [showAll, setShowAll] = useState(false);
   const [selected, setSelected] = useState<(typeof certificates)[number] | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -45,8 +46,8 @@ export default function Certificates() {
         <p className="text-xs uppercase tracking-[0.24em] text-accent">{t("05 / Sertifikat")}</p>
         <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl"><Typewriter words={[t("Bagian dari perjalanan.")]} /></h2>
         <p className="mt-5 max-w-xl leading-relaxed text-muted">{t("Pengalaman magang, serta kegiatan sebagai panitia dan peserta dalam webinar, kuliah umum, dan visiting lecture.")}</p>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {[...certificates].sort((a, b) => b.iso.localeCompare(a.iso)).map((certificate) => (
+        <div id="certificate-list" className="mt-10 grid gap-6 md:grid-cols-2">
+          {[...certificates].sort((a, b) => b.iso.localeCompare(a.iso)).slice(0, showAll ? certificates.length : 6).map((certificate) => (
             <article key={certificate.image} className="overflow-hidden rounded-2xl border border-foreground/10 bg-surface transition-colors duration-200 hover:border-accent/30">
               <button type="button" onClick={() => setSelected(certificate)} className="group block w-full cursor-pointer" aria-haspopup="dialog" aria-label={`${t("Lihat detail sertifikat")} ${t(certificate.title)}`}>
                 <Image src={certificate.image} alt={`${t("Sertifikat atas nama Arya Agung Triadi:")} ${t(certificate.title)}`} width={certificate.width} height={certificate.height} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full transition-opacity group-hover:opacity-85" />
@@ -60,6 +61,7 @@ export default function Certificates() {
             </article>
           ))}
         </div>
+        <div className="mt-7 text-center"><button type="button" aria-expanded={showAll} aria-controls="certificate-list" onClick={() => setShowAll(value => !value)} className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-accent/30 px-5 py-3 text-sm font-medium text-accent transition-colors hover:bg-accent/10">{t(showAll ? "Tampilkan lebih sedikit" : "Lihat semua sertifikat")}<span aria-hidden="true">{showAll ? "−" : "+"}</span></button></div>
       </div>
     </section>
     <dialog ref={dialog} aria-labelledby="certificate-dialog-title" aria-describedby="certificate-dialog-description" onCancel={() => setSelected(null)} onClose={() => setSelected(null)} onClick={(event) => {

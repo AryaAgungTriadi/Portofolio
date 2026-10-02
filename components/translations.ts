@@ -1,4 +1,13 @@
 export const translations: Record<string, string> = {
+  "Lihat semua sertifikat": "View all certificates",
+  "Tampilkan lebih sedikit": "Show less",
+  "Database": "Database",
+  "Teknologi untuk menyimpan dan mengelola data aplikasi.": "Technologies for storing and managing application data.",
+  "Pengembangan Mobile": "Mobile Development",
+  "Bahasa dan framework yang pernah digunakan untuk membangun aplikasi mobile.": "Languages and frameworks I've used to build mobile applications.",
+  "Aku Arya Agung Triadi, mahasiswa Informatika Universitas Sultan Ageng Tirtayasa yang berfokus pada pengembangan web dan desain UI/UX.": "I'm Arya Agung Triadi, an Informatics student at Universitas Sultan Ageng Tirtayasa focused on web development and UI/UX design.",
+  "Aku belajar melalui proyek mandiri dan kolaborasi tim, mulai dari merancang antarmuka hingga membangun aplikasi. Selain web, aku juga pernah mengembangkan aplikasi mobile dengan Flutter. Di luar pemrograman, aku menikmati fotografi, videografi, serta editing foto dan video.": "I learn through independent projects and team collaboration, from designing interfaces to building applications. Alongside web development, I have also built mobile applications with Flutter. Outside programming, I enjoy photography, videography, and photo and video editing.",
+
   "Pesan & balasan": "Messages & replies",
   "Hapus": "Delete",
   "Hapus pesan dari": "Delete message from",

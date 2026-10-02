@@ -18,8 +18,8 @@ export default function About() {
           </h2>
         </div>
         <div>
-          <p className="max-w-2xl text-xl leading-relaxed text-foreground sm:text-2xl">{t("Aku Arya Agung Triadi, mahasiswa Informatika Universitas Sultan Ageng Tirtayasa yang antusias di bidang UI/UX dan pengembangan web.")}</p>
-          <p className="mt-5 max-w-xl leading-relaxed text-muted">{t("Selain mengembangkan web dan desain antarmuka, aku juga tertarik pada fotografi, videografi, serta editing visual. Aku berpengalaman dalam proyek teknologi dan konten kreatif, serta menggunakan berbagai tools digital untuk pengembangan sistem dan desain.")}</p>
+          <p className="max-w-2xl text-xl leading-relaxed text-foreground sm:text-2xl">{t("Aku Arya Agung Triadi, mahasiswa Informatika Universitas Sultan Ageng Tirtayasa yang berfokus pada pengembangan web dan desain UI/UX.")}</p>
+          <p className="mt-5 max-w-xl leading-relaxed text-muted">{t("Aku belajar melalui proyek mandiri dan kolaborasi tim, mulai dari merancang antarmuka hingga membangun aplikasi. Selain web, aku juga pernah mengembangkan aplikasi mobile dengan Flutter. Di luar pemrograman, aku menikmati fotografi, videografi, serta editing foto dan video.")}</p>
           <div className="mt-9 rounded-2xl border border-foreground/10 bg-surface p-6 sm:p-8">
             <p className="text-xs uppercase tracking-[0.2em] text-accent">{t("Magang Mandiri · Batch 4")}</p>
             <p className="mt-4 text-lg leading-relaxed text-foreground">VINIX7 — Web Development &amp; UI/UX</p>

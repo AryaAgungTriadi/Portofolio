@@ -107,7 +107,7 @@ export default function Guestbook() {
       <div className="flex h-full min-h-0 flex-col">
         <header className="flex shrink-0 items-center gap-3 border-b border-foreground/10 px-5 py-5 sm:px-5">
           <span aria-hidden="true" className="flex size-10 items-center justify-center rounded-xl bg-accent/15 text-accent"><UiIcon name="message" className="size-5"/></span>
-          <div className="min-w-0 flex-1"><h2 id="guestbook-title" className="text-lg font-semibold">{t("Buku Tamu")}</h2><p className="mt-1 text-xs text-muted">{entries.length} {t("jejak tersimpan")}</p></div>
+          <div className="min-w-0 flex-1"><h2 id="guestbook-title" className="text-lg font-semibold">{t("Buku Tamu")}</h2><p className="mt-1 text-xs text-muted">{entries.length} {language === "en" ? (entries.length === 1 ? "published message" : "published messages") : t("jejak tersimpan")}</p></div>
           <button type="button" autoFocus aria-label={t("Tutup Buku Tamu")} onClick={() => setOpen(false)} className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-xl border border-foreground/15 px-3 text-xs transition-colors hover:border-accent/40 hover:bg-accent/5"><span className="text-muted">ESC</span> <UiIcon name="close" className="size-4"/></button>
         </header>
         <section className="shrink-0 border-b border-foreground/10 bg-background/25 px-5 py-4 sm:px-5">

@@ -10,9 +10,19 @@ const skillGroups = [
     items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "HTML", "CSS", "JavaScript", "PHP", "Python", "Java", "C", "C++"],
   },
   {
+    title: "Database",
+    description: "Teknologi untuk menyimpan dan mengelola data aplikasi.",
+    items: ["SQL", "Supabase"],
+  },
+  {
+    title: "Pengembangan Mobile",
+    description: "Bahasa dan framework yang pernah digunakan untuk membangun aplikasi mobile.",
+    items: ["Flutter", "Dart"],
+  },
+  {
     title: "Desain & Editing",
     description: "Tools untuk UI/UX, foto, video, dan animasi.",
-    items: ["Figma", "Canva", "Adobe Photoshop", "Adobe Premiere Pro", "Adobe Lightroom", "Adobe After Effects", "Adobe Illustrator", "Adobe Animate", "CapCut", "Alight Motion"],
+    items: ["Figma", "Canva", "Adobe Photoshop", "Adobe Premiere Pro", "Adobe Lightroom", "Adobe After Effects", "Adobe Illustrator", "CapCut", "Alight Motion"],
   },
   {
     title: "3D, Game & Audio",
