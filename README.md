@@ -7,16 +7,19 @@ Portfolio personal Arya Agung Triadi, mahasiswa Informatika Universitas Sultan A
 ## Fitur
 
 - Form kontak dengan pilihan subjek dan pengiriman email melalui Resend.
-- Panel Buku Tamu mengambang, komentar dan balasan disimpan di Supabase dengan moderasi.
-
+- Panel Buku Tamu dengan login Google/GitHub, pesan langsung tampil, balasan berurutan di bawah pesan asal, dan kontrol hapus untuk pemilik.
 - Pilihan bahasa Indonesia/Inggris (ID / EN) dan tema gelap/terang, dengan preferensi yang diingat.
-
 - Tampilan responsive untuk desktop dan perangkat mobile.
 - Navbar dengan indikator aktif yang bergeser halus dan navigasi scroll smooth.
 - Animasi fade, blur ringan, dan geser saat konten masuk layar; berulang ketika kembali ke layar.
 - Dukungan preferensi reduced motion, navigasi keyboard, dan tautan untuk melewati navigasi.
 - Profil dan pengalaman Magang Mandiri VINIX7 Batch 4 di bidang Web Development dan UI/UX.
 - Daftar keterampilan, proyek, prestasi, dan sertifikat dari terbaru ke terlama.
+- Enam sertifikat terbaru, tombol lihat semua, dan popup detail dengan halaman pendukung.
+- Preview proyek dengan background screenshot blur.
+- Animasi pembuka dan transisi perubahan bahasa.
+- Statistik pengunjung melalui Vercel Web Analytics.
+- Tombol salin email dan tautan WhatsApp dengan nomor +62.
 - Tombol unduh CV dalam format PDF.
 - Tautan proyek, GitHub, LinkedIn, serta kontak.
 
@@ -70,6 +73,9 @@ components/
   Achievements.tsx      # Prestasi lomba video
   Certificates.tsx      # Sertifikat, diurutkan berdasarkan tanggal
   Contact.tsx           # Kontak dan profil sosial
+  Guestbook.tsx         # Login, percakapan, balasan, dan kontrol pemilik
+  PageEntrance.tsx      # Animasi pembuka
+  Language.tsx          # Preferensi bahasa dan transisi
   Footer.tsx            # Penutup halaman
   ScrollReveal.tsx      # Animasi saat konten masuk layar
 public/
@@ -90,7 +96,7 @@ public/
 
 Website di-host di Vercel dan terhubung ke repository ini. Pembaruan pada branch `main` memicu deployment otomatis.
 
-Untuk deployment sendiri, import repository ke Vercel dan gunakan preset Next.js dengan folder project sebagai root.
+Untuk deployment sendiri, import repository ke Vercel dan gunakan preset Next.js dengan folder project sebagai root. Aktifkan Analytics di dashboard Vercel untuk mulai mengumpulkan statistik kunjungan.
 
 ## Kontak
 
