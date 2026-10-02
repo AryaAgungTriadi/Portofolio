@@ -98,3 +98,13 @@ html[data-theme-ready] { transition: --palette-background 380ms ease, --palette-
 @keyframes chat-message-enter { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes ui-spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .guestbook-message, .ui-spinner { animation: none; } .guestbook-launcher:hover { transform: none; } }
+
+/* One border for input focus, including browser autofill. */
+.simple-field { background: var(--palette-background); color: var(--palette-foreground); caret-color: var(--palette-accent); }
+.simple-field:hover { border-color: color-mix(in srgb, var(--palette-accent) 55%, transparent); }
+.simple-field:focus, .simple-field:focus-visible { border-color: var(--palette-accent); outline: none; box-shadow: none; }
+input.simple-field:-webkit-autofill,
+input.simple-field:-webkit-autofill:hover,
+input.simple-field:-webkit-autofill:focus { -webkit-text-fill-color: var(--palette-foreground); -webkit-box-shadow: 0 0 0 1000px var(--palette-background) inset; caret-color: var(--palette-accent); }
+.subject-option:hover, .subject-option:focus, .subject-option:focus-visible { background: var(--palette-accent); color: var(--palette-on-accent); outline: none; }
+.subject-option[aria-selected="true"]:not(:focus):not(:hover) { background: color-mix(in srgb, var(--palette-accent) 12%, transparent); color: var(--palette-accent); }
