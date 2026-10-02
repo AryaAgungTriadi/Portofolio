@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <script dangerouslySetInnerHTML={{ __html: `try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")==="light"?"light":"dark"}catch{document.documentElement.dataset.theme="dark"}try{const l=localStorage.getItem("portfolio-language")==="en"?"en":"id";document.documentElement.dataset.language=l;document.documentElement.lang=l}catch{}` }} />
         {children}
+        <Analytics />
       </body>
     </html>
   );
