@@ -1,4 +1,6 @@
 export const translations: Record<string, string> = {
+  "Kirim sebuah pesan": "Send a message",
+  "Ide bagus dimulai dari sapaan.": "Great ideas start with a hello.",
   "jejak tersimpan": "published messages",
   "Masuk melalui": "Signed in with",
   "Keluar": "Sign out",

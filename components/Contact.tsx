@@ -8,8 +8,8 @@ export default function Contact() {
   const { t } = useLanguage();
   return (
     <section id="contact" aria-labelledby="contact-title" className="mx-auto max-w-6xl px-6 pb-20 sm:pb-24 lg:px-10">
-      <div className="grid gap-10 rounded-[2rem] border border-accent/20 bg-surface p-7 sm:p-10 lg:grid-cols-[1.2fr_1fr] lg:p-12">
-        <div>
+      <div className="grid gap-10 rounded-[2rem] border border-accent/20 bg-surface p-4 sm:p-8 lg:grid-cols-[1fr_1.15fr] lg:gap-12 lg:p-10">
+        <div className="min-w-0 px-2 pt-3 sm:px-0 sm:pt-0">
           <p className="text-xs uppercase tracking-[0.24em] text-accent">{t("06 / Kontak")}</p>
           <h2 id="contact-title" className="mt-5 text-3xl leading-tight font-semibold tracking-tight sm:text-5xl">{t("Mari mulai")}<br /><Typewriter words={[t("percakapan.")]} /></h2>
           <p className="mt-6 max-w-md leading-relaxed text-muted">{t("Punya ide proyek atau ingin berdiskusi tentang web, UI/UX, dan karya kreatif? Kamu bisa menghubungiku di sini.")}</p>
