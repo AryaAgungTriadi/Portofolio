@@ -112,5 +112,9 @@ export const translations: Record<string, string> = {
   "19 Februari 2024": "19 February 2024",
   "4 Juni 2024": "4 June 2024",
   "24 Agustus 2024": "24 August 2024",
-  "16 Juni 2025": "16 June 2025"
+  "16 Juni 2025": "16 June 2025",
+  "Tim SMAN 3 Pandeglang meraih Juara III dalam lomba video bertema “Remaja Sehat Bebas Anemia dan Stunting”. Dalam proyek ini, aku berperan sebagai videografer dan editor video.": "Our team from SMAN 3 Pandeglang won third place in a video competition on “Healthy Adolescents Free from Anemia and Stunting.” I worked as the videographer and video editor on this project.",
+  "Peranku": "My role",
+  "Videografer & Editor Video": "Videographer & Video Editor",
+  "Tonton Video": "Watch Video"
 };

@@ -29,11 +29,13 @@ export default function Achievements() {
           <div className="p-7 sm:p-9">
             <p className="text-xs uppercase tracking-[0.2em] text-accent">{t("Pencapaian tim")}</p>
             <h3 id="video-award-title" className="mt-4 text-2xl leading-snug font-semibold">{t("Lomba Video Jambore Remaja")}</h3>
-            <p className="mt-4 leading-relaxed text-muted">{t("Tim SMAN 3 Pandeglang meraih Juara III dalam lomba video bertema “Remaja Sehat Bebas Anemia dan Stunting”. Aku tercatat sebagai anggota tim pada sertifikat kegiatan.")}</p>
+            <p className="mt-4 leading-relaxed text-muted">{t("Tim SMAN 3 Pandeglang meraih Juara III dalam lomba video bertema “Remaja Sehat Bebas Anemia dan Stunting”. Dalam proyek ini, aku berperan sebagai videografer dan editor video.")}</p>
             <dl className="mt-7 grid gap-5 border-t border-foreground/10 pt-6 sm:grid-cols-2">
               <div><dt className="text-xs text-muted">{t("Tim")}</dt><dd className="mt-2 text-sm text-foreground">SMAN 3 Pandeglang</dd></div>
               <div><dt className="text-xs text-muted">{t("Penyelenggara")}</dt><dd className="mt-2 text-sm text-foreground">Médecins Sans Frontières (MSF)</dd></div>
+              <div><dt className="text-xs text-muted">{t("Peranku")}</dt><dd className="mt-2 text-sm text-foreground">{t("Videografer & Editor Video")}</dd></div>
             </dl>
+            <a href="https://drive.google.com/file/d/1FObgb4wNlVzGMDOU7Z4ZOJl8EzrxmETu/view" target="_blank" rel="noopener noreferrer" className="mt-7 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover">{t("Tonton Video")}<span aria-hidden="true">↗</span><span className="sr-only"> {t("(tab baru)")}</span></a>
           </div>
         </article>
         <a href="#certificates" className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm text-accent hover:underline">{t("Lihat sertifikat di bagian Sertifikat")}<span aria-hidden="true">↓</span></a>
