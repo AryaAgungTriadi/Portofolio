@@ -21,6 +21,7 @@ export default function ThemeToggle() {
   const label = theme === "dark" ? "Aktifkan mode terang" : "Aktifkan mode gelap";
   return <button type="button" aria-label={label} title={label} onClick={() => {
     const next = theme === "dark" ? "light" : "dark";
+    document.documentElement.dataset.themeReady = "true";
     document.documentElement.dataset.theme = next;
     try { localStorage.setItem("portfolio-theme", next); } catch { /* Theme still works when storage is unavailable. */ }
     window.dispatchEvent(new Event("portfolio-theme-change"));

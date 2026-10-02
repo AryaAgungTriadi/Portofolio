@@ -12,7 +12,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 export default function Home() {
   return (
     <>
-      <a href="#main-content" className="sr-only fixed top-3 left-3 z-[100] rounded-lg bg-accent px-4 py-3 text-background focus:not-sr-only">Lewati navigasi</a>
+      <a href="#main-content" className="sr-only fixed top-3 left-3 z-[100] rounded-lg bg-accent px-4 py-3 text-on-accent focus:not-sr-only">Lewati navigasi</a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <Hero />

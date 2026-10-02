@@ -74,7 +74,7 @@ export default function Certificates() {
             <Image src={selected.image} alt={`Sertifikat ${selected.title}`} width={selected.width} height={selected.height} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />
             {selected.detailImage && <Image src={selected.detailImage} alt={`Halaman detail pendukung: ${selected.title}`} width={selected.detailWidth ?? 1432} height={selected.detailHeight ?? 1012} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />}
           </div>
-          <a href={selected.pdf ?? selected.image} download className="mt-6 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-accent-hover">Unduh sertifikat <span aria-hidden="true">↓</span></a>
+          <a href={selected.pdf ?? selected.image} download className="mt-6 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover">Unduh sertifikat <span aria-hidden="true">↓</span></a>
         </div>
       </div>}
     </dialog>

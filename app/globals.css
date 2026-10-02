@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
+  --color-on-accent: #1f1f1f;
   --color-background: var(--palette-background);
   --color-surface: var(--palette-surface);
   --color-foreground: var(--palette-foreground);
@@ -25,8 +26,8 @@ html[data-theme="light"] {
   --palette-surface: #f0ede7;
   --palette-foreground: #26231f;
   --palette-muted: #625e57;
-  --palette-accent: #b94708;
-  --palette-accent-hover: #9e3b05;
+  --palette-accent: #ff944d;
+  --palette-accent-hover: #ffad77;
   color-scheme: light;
 }
 html {
@@ -39,7 +40,7 @@ body {
   color: var(--palette-foreground);
   font-family: var(--font-geist-sans), Arial, sans-serif;
 }
-::selection { background: var(--palette-accent); color: var(--palette-background); }
+::selection { background: var(--palette-accent); color: #1f1f1f; }
 :focus-visible { outline: 2px solid var(--palette-accent); outline-offset: 5px; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -65,3 +66,12 @@ body {
 .certificate-dialog[open] { animation: certificate-popup 220ms ease-out; }
 @keyframes certificate-popup { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @media (prefers-reduced-motion: reduce) { .certificate-dialog[open] { animation: none; } }
+
+@property --palette-background { syntax: "<color>"; inherits: true; initial-value: #1f1f1f; }
+@property --palette-surface { syntax: "<color>"; inherits: true; initial-value: #272727; }
+@property --palette-foreground { syntax: "<color>"; inherits: true; initial-value: #faf7f2; }
+@property --palette-muted { syntax: "<color>"; inherits: true; initial-value: #b5b2ad; }
+@property --palette-accent { syntax: "<color>"; inherits: true; initial-value: #ff944d; }
+@property --palette-accent-hover { syntax: "<color>"; inherits: true; initial-value: #ffad77; }
+html[data-theme-ready] { transition: --palette-background 380ms ease, --palette-surface 380ms ease, --palette-foreground 380ms ease, --palette-muted 380ms ease, --palette-accent 380ms ease, --palette-accent-hover 380ms ease; }
+@media (prefers-reduced-motion: reduce) { html[data-theme-ready] { transition: none; } }

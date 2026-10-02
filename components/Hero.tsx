@@ -8,7 +8,7 @@ export default function Hero() {
           <h1 id="hero-title" className="text-5xl leading-[1.08] font-semibold tracking-tight sm:text-7xl lg:text-8xl">Halo, aku<br /><span className="text-accent">Arya.</span></h1>
           <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">Aku Arya Agung Triadi. Web Developer, UI/UX Enthusiast, serta editor foto dan video. Selamat datang di portfolio-ku.</p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <a href="#about" className="inline-flex items-center gap-6 rounded-full bg-accent px-6 py-4 text-sm font-semibold text-background transition-colors hover:bg-accent-hover">Kenali aku lebih dekat <span aria-hidden="true">↗</span></a>
+            <a href="#about" className="inline-flex items-center gap-6 rounded-full bg-accent px-6 py-4 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover">Kenali aku lebih dekat <span aria-hidden="true">↗</span></a>
             <a href="/documents/cv-arya-agung-triadi.pdf" download="CV-Arya-Agung-Triadi.pdf" className="inline-flex items-center gap-3 rounded-full border border-foreground/20 px-6 py-4 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">Unduh CV <span aria-hidden="true">↓</span><span className="sr-only"> (PDF)</span></a>
           </div>
           <div className="mt-12 flex flex-wrap gap-5 text-xs text-muted"><span>Belajar.</span><span>Bereksperimen.</span><span className="text-foreground">Berkarya.</span></div>

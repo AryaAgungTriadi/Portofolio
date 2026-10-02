@@ -48,7 +48,7 @@ export default function Projects() {
                   {project.stack.map((technology) => <li key={technology} className="rounded-lg border border-foreground/10 bg-background px-3 py-2 text-xs text-muted">{technology}</li>)}
                 </ul>
                 <div className="mt-7 flex flex-wrap gap-3">
-                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-accent-hover" aria-label={`Lihat proyek ${project.name} (tab baru)`}>Lihat Proyek <span aria-hidden="true">↗</span></a>
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover" aria-label={`Lihat proyek ${project.name} (tab baru)`}>Lihat Proyek <span aria-hidden="true">↗</span></a>
                   <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent" aria-label={`GitHub ${project.name} (tab baru)`}>GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
