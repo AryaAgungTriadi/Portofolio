@@ -3,6 +3,7 @@
 import { useLanguage } from "./Language";
 
 import Typewriter from "./Typewriter";
+import ContactForm from "./ContactForm";
 export default function Contact() {
   const { t } = useLanguage();
   return (
@@ -12,8 +13,7 @@ export default function Contact() {
           <p className="text-xs uppercase tracking-[0.24em] text-accent">{t("06 / Kontak")}</p>
           <h2 id="contact-title" className="mt-5 text-3xl leading-tight font-semibold tracking-tight sm:text-5xl">{t("Mari mulai")}<br /><Typewriter words={[t("percakapan.")]} /></h2>
           <p className="mt-6 max-w-md leading-relaxed text-muted">{t("Punya ide proyek atau ingin berdiskusi tentang web, UI/UX, dan karya kreatif? Kamu bisa menghubungiku di sini.")}</p>
-        </div>
-        <address className="flex flex-col justify-center gap-6 not-italic">
+        <address className="mt-8 flex flex-col gap-6 not-italic">
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">Email</p><a href="mailto:aryaagungtriadi22@gmail.com" className="mt-2 inline-flex min-h-11 max-w-full items-center break-all text-base text-accent hover:underline sm:text-lg">aryaagungtriadi22@gmail.com</a></div>
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">{t("Telepon")}</p><a href="tel:+6283841327394" className="mt-2 inline-flex min-h-11 items-center text-lg hover:text-accent">0838 4132 7394</a></div>
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">{t("Lokasi")}</p><p className="mt-3 text-sm">Labuan, Pandeglang, Banten</p></div>
@@ -25,6 +25,8 @@ export default function Contact() {
             </div>
           </div>
         </address>
+        </div>
+        <ContactForm />
       </div>
     </section>
   );

@@ -11,6 +11,7 @@ import Navbar from "@/components/Navbar";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import ScrollReveal from "@/components/ScrollReveal";
+import Guestbook from "@/components/Guestbook";
 
 export default function Home() {
   const { t } = useLanguage();
@@ -29,6 +30,7 @@ export default function Home() {
       </main>
       <ScrollReveal />
       <Footer />
+      <Guestbook />
     </>
   );
 }

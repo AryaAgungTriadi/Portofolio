@@ -84,3 +84,7 @@ html[data-theme-ready] { transition: --palette-background 380ms ease, --palette-
 .typewriter[data-typing="true"] .typewriter-cursor { visibility: visible; animation: typewriter-blink 800ms step-end infinite; }
 @keyframes typewriter-blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .typewriter-cursor { display: none; } }
+
+.guestbook-dialog[open] { animation: guestbook-enter 260ms ease-out; }
+@keyframes guestbook-enter { from { opacity: 0; transform: translateX(30px); } to { opacity: 1; transform: translateX(0); } }
+@media (prefers-reduced-motion: reduce) { .guestbook-dialog[open] { animation: none; } }

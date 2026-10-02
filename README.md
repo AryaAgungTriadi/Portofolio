@@ -6,6 +6,9 @@ Portfolio personal Arya Agung Triadi, mahasiswa Informatika Universitas Sultan A
 
 ## Fitur
 
+- Form kontak dengan pilihan subjek dan pengiriman email melalui Resend.
+- Panel Buku Tamu mengambang, komentar dan balasan disimpan di Supabase dengan moderasi.
+
 - Pilihan bahasa Indonesia/Inggris (ID / EN) dan tema gelap/terang, dengan preferensi yang diingat.
 
 - Tampilan responsive untuk desktop dan perangkat mobile.
@@ -39,7 +42,7 @@ npm ci
 npm run dev
 ```
 
-Buka [localhost:3000](http://localhost:3000). Portfolio ini tidak memerlukan environment variable.
+Buka [localhost:3000](http://localhost:3000). Untuk mengaktifkan form kontak dan Buku Tamu, ikuti [panduan Supabase dan Resend](docs/CONTACT-GUESTBOOK.md). Tanpa environment variable, portfolio tetap dapat dibuka, tetapi pengiriman pesan belum aktif.
 
 ## Pemeriksaan dan build
 
