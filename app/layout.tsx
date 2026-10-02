@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://portofolio-green-chi.vercel.app"),
+  metadataBase: new URL("https://portofolio-aryaagungtriadi.vercel.app"),
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
@@ -22,12 +22,12 @@ export const metadata: Metadata = {
     url: "/",
     siteName: "Portfolio Arya",
     title: "Arya Agung Triadi | Portfolio",
-    description: "Web Development, UI/UX, dan karya kreatif Arya Agung Triadi.",
+    description: "Kenali Arya Agung Triadi, mahasiswa Informatika, Web Developer, dan UI/UX Designer. Jelajahi proyek, pengalaman, serta karya kreatifnya.",
   },
   twitter: {
     card: "summary_large_image",
     title: "Arya Agung Triadi | Portfolio",
-    description: "Web Development, UI/UX, dan karya kreatif Arya Agung Triadi.",
+    description: "Kenali Arya Agung Triadi, mahasiswa Informatika, Web Developer, dan UI/UX Designer. Jelajahi proyek, pengalaman, serta karya kreatifnya.",
     images: ["/opengraph-image"],
   },
   title: "Arya Agung Triadi | Portfolio",
