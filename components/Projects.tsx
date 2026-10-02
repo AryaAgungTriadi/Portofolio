@@ -26,7 +26,7 @@ const projects = [
 export default function Projects() {
   return (
     <section id="projects" aria-labelledby="projects-title" className="mx-auto max-w-6xl px-6 pb-20 sm:pb-24 lg:px-10">
-      <div className="border-t border-white/10 pt-10">
+      <div className="border-t border-foreground/10 pt-10">
         <p className="text-xs uppercase tracking-[0.24em] text-accent">03 / Proyek</p>
         <div className="mt-5 grid gap-5 md:grid-cols-2 md:items-end">
           <h2 id="projects-title" className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">Dari ide,<br />menjadi karya.</h2>
@@ -34,8 +34,8 @@ export default function Projects() {
         </div>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {projects.map((project) => (
-            <article key={project.name} aria-labelledby={project.name.toLowerCase() + "-title"} className="overflow-hidden rounded-2xl border border-white/10 bg-surface transition-colors duration-200 hover:border-accent/30">
-              <div aria-hidden="true" className="flex min-h-44 items-center justify-between gap-4 border-b border-white/10 bg-accent/5 px-7 py-8 sm:px-8">
+            <article key={project.name} aria-labelledby={project.name.toLowerCase() + "-title"} className="overflow-hidden rounded-2xl border border-foreground/10 bg-surface transition-colors duration-200 hover:border-accent/30">
+              <div aria-hidden="true" className="flex min-h-44 items-center justify-between gap-4 border-b border-foreground/10 bg-accent/5 px-7 py-8 sm:px-8">
                 <span className="text-6xl font-semibold tracking-tighter text-accent sm:text-7xl">{project.mark}</span>
                 <span className="max-w-36 text-right text-xs uppercase leading-relaxed tracking-[0.15em] text-muted">{project.subtitle}</span>
               </div>
@@ -45,11 +45,11 @@ export default function Projects() {
                 <p className="mt-4 leading-relaxed text-muted">{project.description}</p>
                 <p className="mt-4 text-sm leading-relaxed text-foreground">{project.context}</p>
                 <ul aria-label={"Teknologi " + project.name} className="mt-6 flex flex-wrap gap-2">
-                  {project.stack.map((technology) => <li key={technology} className="rounded-lg border border-white/10 bg-background px-3 py-2 text-xs text-muted">{technology}</li>)}
+                  {project.stack.map((technology) => <li key={technology} className="rounded-lg border border-foreground/10 bg-background px-3 py-2 text-xs text-muted">{technology}</li>)}
                 </ul>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <a href={project.live} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-background transition-colors hover:bg-accent-hover" aria-label={`Lihat proyek ${project.name} (tab baru)`}>Lihat Proyek <span aria-hidden="true">↗</span></a>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full border border-white/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent" aria-label={`GitHub ${project.name} (tab baru)`}>GitHub <span aria-hidden="true">↗</span></a>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent" aria-label={`GitHub ${project.name} (tab baru)`}>GitHub <span aria-hidden="true">↗</span></a>
                 </div>
               </div>
             </article>

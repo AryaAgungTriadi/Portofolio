@@ -9,15 +9,15 @@ export default function Hero() {
           <p className="mt-7 max-w-md text-lg leading-relaxed text-muted">Aku Arya Agung Triadi. Web Developer, UI/UX Enthusiast, serta editor foto dan video. Selamat datang di portfolio-ku.</p>
           <div className="mt-9 flex flex-wrap items-center gap-3">
             <a href="#about" className="inline-flex items-center gap-6 rounded-full bg-accent px-6 py-4 text-sm font-semibold text-background transition-colors hover:bg-accent-hover">Kenali aku lebih dekat <span aria-hidden="true">↗</span></a>
-            <a href="/documents/cv-arya-agung-triadi.pdf" download="CV-Arya-Agung-Triadi.pdf" className="inline-flex items-center gap-3 rounded-full border border-white/20 px-6 py-4 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">Unduh CV <span aria-hidden="true">↓</span><span className="sr-only"> (PDF)</span></a>
+            <a href="/documents/cv-arya-agung-triadi.pdf" download="CV-Arya-Agung-Triadi.pdf" className="inline-flex items-center gap-3 rounded-full border border-foreground/20 px-6 py-4 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">Unduh CV <span aria-hidden="true">↓</span><span className="sr-only"> (PDF)</span></a>
           </div>
           <div className="mt-12 flex flex-wrap gap-5 text-xs text-muted"><span>Belajar.</span><span>Bereksperimen.</span><span className="text-foreground">Berkarya.</span></div>
         </div>
         <figure className="relative mx-auto w-full max-w-sm pb-5 pl-5 lg:max-w-none">
           <div aria-hidden="true" className="absolute inset-x-0 top-5 bottom-0 rounded-[2rem] border border-accent/30" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-surface">
+          <div className="relative overflow-hidden rounded-[2rem] border border-foreground/10 bg-surface">
             <Image src="/images/arya-formal.png" alt="Foto Arya Agung Triadi" width={1086} height={1448} preload sizes="(max-width: 1023px) 384px, 440px" className="aspect-[4/5] w-full object-cover object-top" />
-            <figcaption className="border-t border-white/10 p-5 sm:p-6">
+            <figcaption className="border-t border-foreground/10 p-5 sm:p-6">
               <p className="font-medium">Arya Agung Triadi</p>
               <p className="mt-2 text-sm text-muted">Web Development · UI/UX · Visual Creative</p>
             </figcaption>
