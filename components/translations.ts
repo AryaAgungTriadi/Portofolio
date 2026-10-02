@@ -1,4 +1,12 @@
 export const translations: Record<string, string> = {
+  "Pesan & balasan": "Messages & replies",
+  "Hapus": "Delete",
+  "Hapus pesan dari": "Delete message from",
+  "Hapus pesan ini? Balasannya tetap tersimpan.": "Delete this message? Its replies will be preserved.",
+  "Ya, hapus": "Yes, delete",
+  "Menghapus...": "Deleting...",
+  "Pesan dihapus.": "Message deleted.",
+  "Pesan belum bisa dihapus. Silakan coba lagi.": "Unable to delete the message. Please try again.",
   "Pesan berhasil dikirim!": "Message sent!",
   "Pesan langsung tampil. Yuk, jaga percakapan tetap ramah.": "Messages appear immediately. Keep the conversation friendly.",
   "Lihat pesan dari": "View message from",

@@ -28,3 +28,20 @@ export async function POST(request: Request) {
     return Response.json({ sent: true }, { status: 201 });
   } catch (error) { return failure(error); }
 }
+
+export async function DELETE(request: Request) {
+  try {
+    const values = await body(request);
+    const user = await identity();
+    if (!user) throw new SubmissionError(401);
+    if (!user.is_owner) throw new SubmissionError(403);
+    const id = field(values.id,36,36);
+    if (!/^[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}$/i.test(id)) throw new SubmissionError(400);
+    // Hide a single message; preserve replies and allow restoration in Supabase.
+    const response = await database(`guestbook_entries?id=eq.${id}&approved=eq.true&select=id`, {
+      method: "PATCH", headers: { Prefer: "return=representation" }, body: JSON.stringify({approved:false}),
+    });
+    if (!(await response.json()).length) throw new SubmissionError(404);
+    return Response.json({deleted:true},{headers:{"Cache-Control":"no-store"}});
+  } catch (error) { return failure(error); }
+}
