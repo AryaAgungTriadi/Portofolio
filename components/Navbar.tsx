@@ -3,6 +3,7 @@
 import { useLanguage } from "./Language";
 
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import MusicPlayer from "./MusicPlayer";
 import ThemeToggle from "./ThemeToggle";
 import LanguageToggle from "./Language";
 
@@ -70,6 +71,7 @@ export default function Navbar() {
         if (event.key === "Escape" && open) { setOpen(false); toggle.current?.focus(); }
       }}>
         <a href="#home" onClick={() => setOpen(false)} aria-label={t("Arya, beranda")} className="mr-auto inline-flex min-h-11 items-center rounded text-2xl font-bold tracking-tight transition-opacity hover:opacity-80">arya<span className="text-accent">.</span></a>
+        <MusicPlayer />
         <ThemeToggle />
         <LanguageToggle />
         <button ref={toggle} type="button" aria-expanded={open} aria-controls="nav-links" onClick={() => setOpen(!open)} className="min-h-11 rounded-lg border border-foreground/20 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent lg:hidden">{t(open ? "Tutup" : "Menu")}</button>

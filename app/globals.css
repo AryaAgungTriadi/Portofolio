@@ -118,3 +118,7 @@ input.simple-field:-webkit-autofill:focus { -webkit-text-fill-color: var(--palet
 .page-entrance[hidden] { display: none; }
 @keyframes entrance-fallback { to { visibility: hidden; } }
 @media (prefers-reduced-motion: reduce) { .page-entrance { display: none; } }
+
+.music-panel { animation: music-panel-in 220ms ease-out; }
+@keyframes music-panel-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .music-panel { animation: none; } }
