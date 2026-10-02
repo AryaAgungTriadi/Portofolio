@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "./Language";
+
 import { useSyncExternalStore } from "react";
 
 function subscribe(callback: () => void) {
@@ -17,8 +19,9 @@ function subscribe(callback: () => void) {
 }
 
 export default function ThemeToggle() {
+  const { t } = useLanguage();
   const theme = useSyncExternalStore(subscribe, () => document.documentElement.dataset.theme ?? "dark", () => "dark");
-  const label = theme === "dark" ? "Aktifkan mode terang" : "Aktifkan mode gelap";
+  const label = t(theme === "dark" ? "Aktifkan mode terang" : "Aktifkan mode gelap");
   return <button type="button" aria-label={label} title={label} onClick={() => {
     const next = theme === "dark" ? "light" : "dark";
     document.documentElement.dataset.themeReady = "true";

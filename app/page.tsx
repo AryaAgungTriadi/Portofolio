@@ -1,3 +1,6 @@
+"use client";
+
+import { useLanguage } from "@/components/Language";
 import About from "@/components/About";
 import Achievements from "@/components/Achievements";
 import Certificates from "@/components/Certificates";
@@ -10,9 +13,10 @@ import Skills from "@/components/Skills";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
+  const { t } = useLanguage();
   return (
     <>
-      <a href="#main-content" className="sr-only fixed top-3 left-3 z-[100] rounded-lg bg-accent px-4 py-3 text-on-accent focus:not-sr-only">Lewati navigasi</a>
+      <a href="#main-content" className="sr-only fixed top-3 left-3 z-[100] rounded-lg bg-accent px-4 py-3 text-on-accent focus:not-sr-only">{t("Lewati navigasi")}</a>
       <Navbar />
       <main id="main-content" tabIndex={-1}>
         <Hero />

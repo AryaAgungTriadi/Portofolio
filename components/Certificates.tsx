@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "./Language";
+
 import Typewriter from "./Typewriter";
 
 import Image from "next/image";
@@ -20,6 +22,7 @@ const certificates = [
 ];
 
 export default function Certificates() {
+  const { t } = useLanguage();
   const [selected, setSelected] = useState<(typeof certificates)[number] | null>(null);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -39,20 +42,20 @@ export default function Certificates() {
     <>
     <section id="certificates" aria-labelledby="certificates-title" className="mx-auto max-w-6xl px-6 pb-20 sm:pb-24 lg:px-10">
       <div className="border-t border-foreground/10 pt-10">
-        <p className="text-xs uppercase tracking-[0.24em] text-accent">05 / Sertifikat</p>
-        <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl"><Typewriter words={["Bagian dari perjalanan."]} /></h2>
-        <p className="mt-5 max-w-xl leading-relaxed text-muted">Pengalaman magang, serta kegiatan sebagai panitia dan peserta dalam webinar, kuliah umum, dan visiting lecture.</p>
+        <p className="text-xs uppercase tracking-[0.24em] text-accent">{t("05 / Sertifikat")}</p>
+        <h2 id="certificates-title" className="mt-5 text-3xl font-semibold tracking-tight sm:text-4xl"><Typewriter words={[t("Bagian dari perjalanan.")]} /></h2>
+        <p className="mt-5 max-w-xl leading-relaxed text-muted">{t("Pengalaman magang, serta kegiatan sebagai panitia dan peserta dalam webinar, kuliah umum, dan visiting lecture.")}</p>
         <div className="mt-10 grid gap-6 md:grid-cols-2">
           {[...certificates].sort((a, b) => b.iso.localeCompare(a.iso)).map((certificate) => (
             <article key={certificate.image} className="overflow-hidden rounded-2xl border border-foreground/10 bg-surface transition-colors duration-200 hover:border-accent/30">
-              <button type="button" onClick={() => setSelected(certificate)} className="group block w-full cursor-pointer" aria-haspopup="dialog" aria-label={`Lihat detail sertifikat ${certificate.title}`}>
-                <Image src={certificate.image} alt={`Sertifikat atas nama Arya Agung Triadi: ${certificate.title}`} width={certificate.width} height={certificate.height} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full transition-opacity group-hover:opacity-85" />
+              <button type="button" onClick={() => setSelected(certificate)} className="group block w-full cursor-pointer" aria-haspopup="dialog" aria-label={`${t("Lihat detail sertifikat")} ${t(certificate.title)}`}>
+                <Image src={certificate.image} alt={`${t("Sertifikat atas nama Arya Agung Triadi:")} ${t(certificate.title)}`} width={certificate.width} height={certificate.height} sizes="(max-width: 767px) 100vw, 50vw" className="h-auto w-full transition-opacity group-hover:opacity-85" />
               </button>
               <div className="p-6 sm:p-7">
-                <p className="text-xs uppercase tracking-[0.18em] text-accent">{certificate.role}</p>
-                <h3 className="mt-3 text-xl leading-snug font-semibold">{certificate.title}</h3>
-                <p className="mt-4 text-sm text-muted"><time dateTime={certificate.iso}>{certificate.date}</time></p>
-                <button type="button" onClick={() => setSelected(certificate)} aria-haspopup="dialog" className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 text-sm text-accent hover:underline">Lihat detail <span aria-hidden="true">↗</span></button>
+                <p className="text-xs uppercase tracking-[0.18em] text-accent">{t(certificate.role)}</p>
+                <h3 className="mt-3 text-xl leading-snug font-semibold">{t(certificate.title)}</h3>
+                <p className="mt-4 text-sm text-muted"><time dateTime={certificate.iso}>{t(certificate.date)}</time></p>
+                <button type="button" onClick={() => setSelected(certificate)} aria-haspopup="dialog" className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 text-sm text-accent hover:underline">{t("Lihat detail")}<span aria-hidden="true">↗</span></button>
               </div>
             </article>
           ))}
@@ -64,19 +67,19 @@ export default function Certificates() {
     }} className="certificate-dialog fixed inset-0 m-auto max-h-[90dvh] w-[calc(100%-2rem)] max-w-5xl overflow-y-auto rounded-2xl border border-foreground/15 bg-surface p-0 text-foreground shadow-2xl backdrop:bg-black/75 backdrop:backdrop-blur-sm">
       {selected && <div>
         <div className="sticky top-0 z-10 flex items-center justify-between gap-4 border-b border-foreground/10 bg-surface px-5 py-3 sm:px-7">
-          <p className="text-sm font-medium text-accent">Detail sertifikat</p>
-          <button type="button" autoFocus onClick={() => setSelected(null)} className="min-h-11 cursor-pointer rounded-lg border border-foreground/20 px-4 text-sm transition-colors hover:border-accent hover:text-accent" aria-label="Tutup detail sertifikat">Tutup <span aria-hidden="true">×</span></button>
+          <p className="text-sm font-medium text-accent">{t("Detail sertifikat")}</p>
+          <button type="button" autoFocus onClick={() => setSelected(null)} className="min-h-11 cursor-pointer rounded-lg border border-foreground/20 px-4 text-sm transition-colors hover:border-accent hover:text-accent" aria-label={t("Tutup detail sertifikat")}>{t("Tutup")}<span aria-hidden="true">×</span></button>
         </div>
         <div className="p-5 sm:p-7">
-          <p className="text-xs uppercase tracking-[0.18em] text-accent">{selected.role}</p>
-          <h2 id="certificate-dialog-title" className="mt-3 text-2xl font-semibold sm:text-3xl">{selected.title}</h2>
-          <p className="mt-3 text-sm text-muted"><time dateTime={selected.iso}>{selected.date}</time></p>
-          <p id="certificate-dialog-description" className="mt-4 leading-relaxed text-muted">{selected.description ?? (selected.pdf ? "Sertifikat penyelesaian Magang Mandiri MSIB Batch 4 di PT VINIX SEVEN AURUM, Divisi Web Dev UI/UX, pada 23 Februari–23 Juni 2026. Halaman kedua memuat jobdesk dan pencapaian, termasuk riset pengguna, desain antarmuka, prototyping, pengembangan web, dan deployment." : `Sertifikat atas nama Arya Agung Triadi sebagai ${selected.role.toLowerCase().replace(" / ", " dalam kegiatan ")} dengan topik “${selected.title}”.`)}</p>
+          <p className="text-xs uppercase tracking-[0.18em] text-accent">{t(selected.role)}</p>
+          <h2 id="certificate-dialog-title" className="mt-3 text-2xl font-semibold sm:text-3xl">{t(selected.title)}</h2>
+          <p className="mt-3 text-sm text-muted"><time dateTime={selected.iso}>{t(selected.date)}</time></p>
+          <p id="certificate-dialog-description" className="mt-4 leading-relaxed text-muted">{selected.description ? t(selected.description) : selected.pdf ? t("Sertifikat penyelesaian Magang Mandiri MSIB Batch 4 di PT VINIX SEVEN AURUM, Divisi Web Dev UI/UX, pada 23 Februari–23 Juni 2026. Halaman kedua memuat jobdesk dan pencapaian, termasuk riset pengguna, desain antarmuka, prototyping, pengembangan web, dan deployment.") : `${t("Sertifikat atas nama Arya Agung Triadi:")} ${t(selected.title)}. ${t(selected.role)}.`}</p>
           <div className="mt-6 space-y-4">
-            <Image src={selected.image} alt={`Sertifikat ${selected.title}`} width={selected.width} height={selected.height} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />
-            {selected.detailImage && <Image src={selected.detailImage} alt={`Halaman detail pendukung: ${selected.title}`} width={selected.detailWidth ?? 1432} height={selected.detailHeight ?? 1012} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />}
+            <Image src={selected.image} alt={`${t("Sertifikat:")} ${t(selected.title)}`} width={selected.width} height={selected.height} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />
+            {selected.detailImage && <Image src={selected.detailImage} alt={`${t("Halaman detail pendukung:")} ${t(selected.title)}`} width={selected.detailWidth ?? 1432} height={selected.detailHeight ?? 1012} sizes="(max-width: 1023px) 100vw, 960px" className="h-auto w-full rounded-lg" />}
           </div>
-          <a href={selected.pdf ?? selected.image} download className="mt-6 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover">Unduh sertifikat <span aria-hidden="true">↓</span></a>
+          <a href={selected.pdf ?? selected.image} download className="mt-6 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover">{t("Unduh sertifikat")}<span aria-hidden="true">↓</span></a>
         </div>
       </div>}
     </dialog>

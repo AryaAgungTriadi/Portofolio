@@ -1,3 +1,7 @@
+"use client";
+
+import { useLanguage } from "./Language";
+
 import Typewriter from "./Typewriter";
 const skillGroups = [
   {
@@ -23,6 +27,7 @@ const skillGroups = [
 ];
 
 export default function Skills() {
+  const { t } = useLanguage();
   return (
     <section
       id="skills"
@@ -32,20 +37,17 @@ export default function Skills() {
       <div className="border-t border-foreground/10 pt-10">
         <p className="text-xs uppercase tracking-[0.24em] text-accent">02 / Skills</p>
         <div className="mt-5 grid gap-5 md:grid-cols-2 md:items-end">
-          <h2 id="skills-title" className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
-            Bekal untuk<br /><Typewriter words={["membangun karya."]} />
+          <h2 id="skills-title" className="text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">{t("Bekal untuk")}<br /><Typewriter words={[t("membangun karya.")]} />
           </h2>
-          <p className="max-w-md leading-relaxed text-muted">
-            Dari pengembangan web dan UI/UX hingga konten visual, 3D, dan audio, berikut teknologi dan tools yang menjadi bagian dari perjalanan belajarku.
-          </p>
+          <p className="max-w-md leading-relaxed text-muted">{t("Dari pengembangan web dan UI/UX hingga konten visual, 3D, dan audio, berikut teknologi dan tools yang menjadi bagian dari perjalanan belajarku.")}</p>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {skillGroups.map((group, index) => (
             <article key={group.title} aria-labelledby={`skill-group-${index}`} className="rounded-2xl border border-foreground/10 bg-surface transition-colors duration-200 hover:border-accent/30 p-6 sm:p-7">
               <span aria-hidden="true" className="text-xs font-mono text-accent">0{index + 1}</span>
-              <h3 id={`skill-group-${index}`} className="mt-5 text-xl font-semibold">{group.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{group.description}</p>
-              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`Daftar skill ${group.title}`}>
+              <h3 id={`skill-group-${index}`} className="mt-5 text-xl font-semibold">{t(group.title)}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{t(group.description)}</p>
+              <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${t("Daftar skill")} ${t(group.title)}`}>
                 {group.items.map((item) => (
                   <li key={item} className="rounded-lg border border-foreground/10 bg-background px-3 py-2 text-sm text-foreground">{item}</li>
                 ))}

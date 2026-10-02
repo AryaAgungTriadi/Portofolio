@@ -6,6 +6,8 @@ Portfolio personal Arya Agung Triadi, mahasiswa Informatika Universitas Sultan A
 
 ## Fitur
 
+- Pilihan bahasa Indonesia/Inggris (ID / EN) dan tema gelap/terang, dengan preferensi yang diingat.
+
 - Tampilan responsive untuk desktop dan perangkat mobile.
 - Navbar dengan indikator aktif yang bergeser halus dan navigasi scroll smooth.
 - Animasi fade, blur ringan, dan geser saat konten masuk layar; berulang ketika kembali ke layar.

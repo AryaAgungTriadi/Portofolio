@@ -41,7 +41,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <script dangerouslySetInnerHTML={{ __html: `try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")==="light"?"light":"dark"}catch{document.documentElement.dataset.theme="dark"}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `try{document.documentElement.dataset.theme=localStorage.getItem("portfolio-theme")==="light"?"light":"dark"}catch{document.documentElement.dataset.theme="dark"}try{const l=localStorage.getItem("portfolio-language")==="en"?"en":"id";document.documentElement.dataset.language=l;document.documentElement.lang=l}catch{}` }} />
         {children}
       </body>
     </html>
