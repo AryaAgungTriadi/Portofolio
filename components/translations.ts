@@ -1,4 +1,16 @@
 export const translations: Record<string, string> = {
+  "Kategori sertifikat": "Certificate categories",
+  "Semua": "All",
+  "Pelatihan & Magang": "Training & Internships",
+  "Kepanitiaan": "Event Organizing",
+  "Seminar & Webinar": "Seminars & Webinars",
+  "Peserta": "Participant",
+  "Panitia": "Organizer",
+  "Magang": "Internship",
+  "Ditampilkan": "Showing",
+  "dari": "of",
+  "sertifikat": "certificates",
+
   "Bahasa dan teknologi untuk web, database, dan aplikasi mobile dalam perjalanan belajarku.": "Languages and technologies for web, databases, and mobile apps throughout my learning journey.",
   "Aku juga menggunakan SQL dan Supabase untuk pengelolaan data, serta pernah mengembangkan aplikasi mobile dengan Flutter dan Dart.": "I also use SQL and Supabase to manage data, and have developed mobile applications with Flutter and Dart.",
 
