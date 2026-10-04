@@ -100,7 +100,8 @@ Untuk deployment sendiri, import repository ke Vercel dan gunakan preset Next.js
 
 ## Kontak
 
-- [LinkedIn](https://www.linkedin.com/in/arya-agung-triadi-31ab79318)
+- [LinkedIn](https://www.linkedin.com/in/aryaagungtriadi)
+- [Instagram](https://www.instagram.com/aryaagungtriadii/)
 - [GitHub](https://github.com/AryaAgungTriadi)
 - [Email](mailto:aryaagungtriadi22@gmail.com)
 
