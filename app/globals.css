@@ -133,3 +133,19 @@ input.simple-field:-webkit-autofill:focus { -webkit-text-fill-color: var(--palet
 @media (min-width: 768px) {
   .certificate-teaser { height: clamp(145px, 16vw, 195px); }
 }
+
+/* Skill badges lift gently without implying that they are links or buttons. */
+.skill-badge { transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease, background-color 220ms ease; }
+.skill-icon { transition: transform 220ms ease; }
+@media (hover: hover) {
+  .skill-badge:hover { transform: translateY(-3px); border-color: var(--palette-accent); background-color: color-mix(in srgb, var(--palette-accent) 5%, var(--palette-background)); box-shadow: 0 6px 14px -8px color-mix(in srgb, var(--palette-accent) 45%, transparent); }
+  .skill-badge:hover .skill-icon { transform: scale(1.1); }
+}
+.skill-badge:active { border-color: var(--palette-accent); }
+@media (prefers-reduced-motion: reduce) {
+  .skill-badge, .skill-icon { transition: none; }
+  .skill-badge:hover, .skill-badge:hover .skill-icon { transform: none; }
+}
+
+.skill-icon-monochrome { filter: invert(1); }
+html[data-theme='light'] .skill-icon-monochrome { filter: none; }

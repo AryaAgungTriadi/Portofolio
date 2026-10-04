@@ -3,6 +3,39 @@
 import { useLanguage } from "./Language";
 
 import Typewriter from "./Typewriter";
+const skillIcons: Record<string, string> = {
+  "Next.js": "nextjs",
+  "React": "react",
+  "TypeScript": "typescript",
+  "Tailwind CSS": "tailwindcss",
+  "HTML": "html5",
+  "CSS": "css3",
+  "JavaScript": "javascript",
+  "PHP": "php",
+  "Python": "python",
+  "Java": "java",
+  "C": "c",
+  "C++": "cplusplus",
+  "SQL": "azuresqldatabase",
+  "Supabase": "supabase",
+  "Flutter": "flutter",
+  "Dart": "dart",
+  "Figma": "figma",
+  "Canva": "canva",
+  "Blender": "blender",
+  "Unity Hub": "unity",
+  "Adobe Photoshop": "adobe-photoshop",
+  "Adobe Premiere Pro": "adobe-premiere-pro",
+  "Adobe Lightroom": "adobe-lightroom",
+  "Adobe After Effects": "adobe-after-effects",
+  "Adobe Illustrator": "adobe-illustrator",
+  "CapCut": "capcut",
+  "Alight Motion": "alight-motion",
+  "FL Studio": "fl-studio",
+  "Google Workspace": "google-workspace",
+  "Microsoft 365": "microsoft-365"
+};
+
 const skillGroups = [
   {
     title: "Pemrograman & Web",
@@ -49,7 +82,14 @@ export default function Skills() {
               <p className="mt-3 text-sm leading-relaxed text-muted">{t(group.description)}</p>
               <ul className="mt-6 flex flex-wrap gap-2" aria-label={`${t("Daftar skill")} ${t(group.title)}`}>
                 {group.items.map((item) => (
-                  <li key={item} className="rounded-lg border border-foreground/10 bg-background px-3 py-2 text-sm text-foreground">{item}</li>
+                  <li key={item} className="skill-badge inline-flex items-center gap-2 rounded-lg border border-foreground/10 bg-background px-3 py-2 text-sm text-foreground">
+                    <span className="skill-icon inline-flex h-5 w-5 shrink-0 items-center justify-center" aria-hidden="true">
+                      {/* Local SVGs keep the skill list independent of external image services. */}
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={`/icons/skills/${skillIcons[item]}.svg`} alt="" width={20} height={20} loading="lazy" className={`h-5 w-5 object-contain ${item === "Next.js" || item === "Unity Hub" ? "skill-icon-monochrome" : ""}`} />
+                    </span>
+                    {item}
+                  </li>
                 ))}
               </ul>
             </article>
