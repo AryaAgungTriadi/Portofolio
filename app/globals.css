@@ -122,3 +122,14 @@ input.simple-field:-webkit-autofill:focus { -webkit-text-fill-color: var(--palet
 .music-panel { animation: music-panel-in 220ms ease-out; }
 @keyframes music-panel-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
 @media (prefers-reduced-motion: reduce) { .music-panel { animation: none; } }
+
+/* A short glimpse of the next certificate row, fading into the page. */
+.certificate-teaser { height: clamp(120px, 35vw, 170px); }
+.certificate-teaser-fade {
+  backdrop-filter: blur(3px);
+  background: linear-gradient(to bottom, transparent, var(--palette-background) 95%);
+  mask-image: linear-gradient(to bottom, transparent, black 65%);
+}
+@media (min-width: 768px) {
+  .certificate-teaser { height: clamp(145px, 16vw, 195px); }
+}

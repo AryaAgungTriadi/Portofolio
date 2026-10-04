@@ -1,4 +1,5 @@
 export const translations: Record<string, string> = {
+  "Lihat selengkapnya": "View more",
   "Kategori sertifikat": "Certificate categories",
   "Semua": "All",
   "Pelatihan & Magang": "Training & Internships",
