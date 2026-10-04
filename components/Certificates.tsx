@@ -5,7 +5,7 @@ import { useLanguage } from "./Language";
 import Typewriter from "./Typewriter";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 const certificates = [
   { title: "Juara III Lomba Video Jambore Remaja", date: "29 September 2022", iso: "2022-09-29", image: "/images/achievement-video.jpg", width: 1588, height: 1128, category: "Prestasi", badge: "Prestasi", role: "Prestasi / Lomba Video", detailImage: "/images/achievement-team.jpg", detailWidth: 1528, detailHeight: 1093, description: "Tim SMAN 3 Pandeglang meraih Juara III kategori usia 15–19 tahun dalam lomba video Jambore Remaja bertema Remaja Sehat Bebas Anemia dan Stunting, yang diselenggarakan oleh Médecins Sans Frontières (MSF). Preview pertama menampilkan sertifikat penghargaan; preview kedua memuat daftar anggota tim, termasuk Arya Agung Triadi." },
@@ -31,6 +31,27 @@ export default function Certificates() {
   const filtered = [...certificates].filter(item => category === "Semua" || item.category === category).sort((a, b) => b.iso.localeCompare(a.iso));
   const visible = showAll ? filtered : filtered.slice(0, 2);
   const dialog = useRef<HTMLDialogElement>(null);
+  const collection = useRef<HTMLDivElement>(null);
+  const previousHeight = useRef<number | null>(null);
+  const transition = useRef<Animation | null>(null);
+  const toggleCollection = () => {
+    previousHeight.current = collection.current?.getBoundingClientRect().height ?? null;
+    setShowAll(value => !value);
+  };
+  useLayoutEffect(() => {
+    const element = collection.current;
+    if (!element || previousHeight.current === null) return;
+    const from = previousHeight.current;
+    transition.current?.cancel();
+    const to = element.getBoundingClientRect().height;
+    previousHeight.current = null;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    transition.current = element.animate(
+      [{ height: `${from}px` }, { height: `${to}px` }],
+      { duration: 520, easing: "cubic-bezier(0.22, 1, 0.36, 1)" }
+    );
+    return () => { transition.current?.cancel(); };
+  }, [showAll, category]);
 
   useEffect(() => {
     if (!selected) return;
@@ -54,7 +75,8 @@ export default function Certificates() {
         <div role="group" aria-label={t("Kategori sertifikat")} className="mt-7 flex flex-wrap gap-2">
           {categories.map(item => <button key={item} type="button" aria-pressed={category === item} aria-controls="certificate-list" onClick={() => { setCategory(item); setShowAll(false); }} className={"min-h-11 cursor-pointer rounded-full border px-4 py-2 text-sm transition-colors " + (category === item ? "border-accent bg-accent/10 text-accent" : "border-foreground/15 text-muted hover:border-accent/50 hover:text-accent")}>{t(item)}<span className="ml-2 text-xs opacity-70">{item === "Semua" ? certificates.length : certificates.filter(certificate => certificate.category === item).length}</span></button>)}
         </div>
-        <div id="certificate-list" className="mt-5 grid gap-6 md:grid-cols-2">
+        <div ref={collection} className="mt-5 overflow-hidden pb-1">
+        <div id="certificate-list" className=" grid gap-6 md:grid-cols-2">
           {visible.map((certificate, index) => (
             <article key={certificate.image} className={"overflow-hidden rounded-2xl border border-foreground/10 bg-surface transition-colors duration-200 hover:border-accent/30 " + (!showAll && index === 1 ? "hidden md:block" : "")}>
               <button type="button" onClick={() => setSelected(certificate)} className="group block w-full cursor-pointer" aria-haspopup="dialog" aria-label={`${t("Lihat detail sertifikat")} ${t(certificate.title)}`}>
@@ -83,9 +105,9 @@ export default function Certificates() {
           <div className="certificate-teaser-fade pointer-events-none absolute inset-0" />
         </div>}
         {filtered.length > 1 && <div className={"relative z-10 text-center " + (showAll ? "mt-7" : "-mt-8") + (filtered.length <= 2 && !showAll ? " md:hidden" : "")}>
-          <button type="button" aria-expanded={showAll} aria-controls="certificate-list" onClick={() => setShowAll(value => !value)} className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-accent/30 bg-background px-5 py-3 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-surface">{t(showAll ? "Tampilkan lebih sedikit" : "Lihat selengkapnya")}<span aria-hidden="true">{showAll ? "−" : "+"}</span></button>
+          <button type="button" aria-expanded={showAll} aria-controls="certificate-list" onClick={toggleCollection} className="inline-flex min-h-11 cursor-pointer items-center gap-2 rounded-full border border-accent/30 bg-background px-5 py-3 text-sm font-medium text-accent transition-colors hover:border-accent hover:bg-surface">{t(showAll ? "Tampilkan lebih sedikit" : "Lihat selengkapnya")}<span aria-hidden="true">{showAll ? "−" : "+"}</span></button>
         </div>}
-
+        </div>
       </div>
     </section>
     <dialog ref={dialog} aria-labelledby="certificate-dialog-title" aria-describedby="certificate-dialog-description" onCancel={() => setSelected(null)} onClose={() => setSelected(null)} onClick={(event) => {
