@@ -4,36 +4,36 @@ import { useLanguage } from "./Language";
 
 import Typewriter from "./Typewriter";
 const skillIcons: Record<string, string> = {
-  "Next.js": "nextjs",
-  "React": "react",
-  "TypeScript": "typescript",
-  "Tailwind CSS": "tailwindcss",
-  "HTML": "html5",
-  "CSS": "css3",
-  "JavaScript": "javascript",
-  "PHP": "php",
-  "Python": "python",
-  "Java": "java",
-  "C": "c",
-  "C++": "cplusplus",
-  "SQL": "sql",
-  "Supabase": "supabase",
-  "Flutter": "flutter",
-  "Dart": "dart",
-  "Figma": "figma",
-  "Canva": "canva",
-  "Blender": "blender",
-  "Unity Hub": "unity",
-  "Adobe Photoshop": "adobe-photoshop",
-  "Adobe Premiere Pro": "adobe-premiere-pro",
-  "Adobe Lightroom": "adobe-lightroom",
-  "Adobe After Effects": "adobe-after-effects",
-  "Adobe Illustrator": "adobe-illustrator",
-  "CapCut": "capcut",
-  "Alight Motion": "alight-motion",
-  "FL Studio": "fl-studio",
-  "Google Workspace": "google-workspace",
-  "Microsoft 365": "microsoft-365"
+  "Next.js": "nextjs.svg",
+  "React": "react.svg",
+  "TypeScript": "typescript.svg",
+  "Tailwind CSS": "tailwindcss.svg",
+  "HTML": "html5.png",
+  "CSS": "css3.png",
+  "JavaScript": "javascript.png",
+  "PHP": "php.svg",
+  "Python": "python.svg",
+  "Java": "java.svg",
+  "C": "c.png",
+  "C++": "cplusplus.svg",
+  "SQL": "sql.svg",
+  "Supabase": "supabase.svg",
+  "Flutter": "flutter.svg",
+  "Dart": "dart.svg",
+  "Figma": "figma.svg",
+  "Canva": "canva.svg",
+  "Blender": "blender.svg",
+  "Unity Hub": "unity.svg",
+  "Adobe Photoshop": "adobe-photoshop.svg",
+  "Adobe Premiere Pro": "adobe-premiere-pro.svg",
+  "Adobe Lightroom": "adobe-lightroom.svg",
+  "Adobe After Effects": "adobe-after-effects.svg",
+  "Adobe Illustrator": "adobe-illustrator.svg",
+  "CapCut": "capcut.ico",
+  "Alight Motion": "alight-motion.png",
+  "FL Studio": "fl-studio.ico",
+  "Google Workspace": "google-workspace.svg",
+  "Microsoft 365": "microsoft-365.svg"
 };
 
 const skillGroups = [
@@ -84,9 +84,9 @@ export default function Skills() {
                 {group.items.map((item) => (
                   <li key={item} className="skill-badge inline-flex items-center gap-2 rounded-lg border border-foreground/10 bg-background px-3 py-2 text-sm text-foreground">
                     <span className="skill-icon inline-flex h-5 w-5 shrink-0 items-center justify-center" aria-hidden="true">
-                      {/* Local SVGs keep the skill list independent of external image services. */}
+                      {/* Local icons keep the skill list independent of external image services. */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/icons/skills/${skillIcons[item]}.${item === "CapCut" || item === "FL Studio" ? "ico" : item === "Alight Motion" ? "png" : "svg"}`} alt="" width={20} height={20} loading="lazy" className={`h-5 w-5 object-contain ${item === "Next.js" || item === "Unity Hub" ? "skill-icon-monochrome" : ""}`} />
+                      <img src={`/icons/skills/${skillIcons[item]}`} alt="" width={20} height={20} loading="lazy" className={`h-5 w-5 object-contain ${item === "Next.js" || item === "Unity Hub" ? "skill-icon-monochrome" : ""}`} />
                     </span>
                     {item}
                   </li>
