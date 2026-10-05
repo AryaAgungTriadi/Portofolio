@@ -16,7 +16,7 @@ const skillIcons: Record<string, string> = {
   "Java": "java",
   "C": "c",
   "C++": "cplusplus",
-  "SQL": "azuresqldatabase",
+  "SQL": "sql",
   "Supabase": "supabase",
   "Flutter": "flutter",
   "Dart": "dart",
@@ -86,7 +86,7 @@ export default function Skills() {
                     <span className="skill-icon inline-flex h-5 w-5 shrink-0 items-center justify-center" aria-hidden="true">
                       {/* Local SVGs keep the skill list independent of external image services. */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img src={`/icons/skills/${skillIcons[item]}.svg`} alt="" width={20} height={20} loading="lazy" className={`h-5 w-5 object-contain ${item === "Next.js" || item === "Unity Hub" ? "skill-icon-monochrome" : ""}`} />
+                      <img src={`/icons/skills/${skillIcons[item]}.${item === "CapCut" || item === "FL Studio" ? "ico" : item === "Alight Motion" ? "png" : "svg"}`} alt="" width={20} height={20} loading="lazy" className={`h-5 w-5 object-contain ${item === "Next.js" || item === "Unity Hub" ? "skill-icon-monochrome" : ""}`} />
                     </span>
                     {item}
                   </li>
