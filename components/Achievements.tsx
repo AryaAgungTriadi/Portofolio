@@ -4,6 +4,7 @@ import { useLanguage } from "./Language";
 
 import Typewriter from "./Typewriter";
 import ContentPreview from "./ContentPreview";
+import Gaming from "./Gaming";
 
 
 export default function Achievements() {
@@ -40,6 +41,7 @@ export default function Achievements() {
           </div>
         </article>
         <a href="#certificates" className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm text-accent hover:underline">{t("Lihat sertifikat di bagian Sertifikat")}<span aria-hidden="true">↓</span></a>
+        <Gaming />
       </div>
     </section>
   );
