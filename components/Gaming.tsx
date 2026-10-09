@@ -7,12 +7,13 @@ import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "./Language";
 
 const gallery = [
-  { file: "profile", id: "Profil", en: "Profile" },
-  { file: "stats", id: "Statistik", en: "Statistics" },
-  { file: "heroes", id: "Hero favorit", en: "Favorite heroes" },
-  { file: "titles", id: "Gelar Alucard", en: "Alucard titles" },
-  { file: "seasons", id: "Riwayat season", en: "Season history" },
-  { file: "collection", id: "Koleksi", en: "Collection" },
+  { file: "profile", width: 1920, height: 1080, id: "Profil", en: "Profile" },
+  { file: "stats", width: 1920, height: 1080, id: "Statistik", en: "Statistics" },
+  { file: "heroes", width: 1920, height: 1080, id: "Hero favorit", en: "Favorite heroes" },
+  { file: "titles", width: 1420, height: 799, id: "Gelar Alucard", en: "Alucard titles" },
+  { file: "seasons", width: 1920, height: 1080, id: "Riwayat season", en: "Season history" },
+  { file: "collection", width: 1920, height: 1080, id: "Koleksi", en: "Collection" },
+  { file: "account", width: 1167, height: 657, id: "Awal bermain", en: "Playing history" },
 ];
 const heroes = [
   { name: "Alucard", matches: 3593, rate: "59.7%", power: 8026 },
@@ -63,6 +64,7 @@ export default function Gaming() {
         <p className="text-xs uppercase tracking-[0.2em] text-accent">{en ? "Beyond coding" : "Di luar coding"}</p>
         <h3 id="gaming-title" className="mt-3 text-2xl font-semibold">{en ? "A little competitive side." : "Sisi kompetitifku."}</h3>
         <p className="mt-3 text-sm leading-relaxed text-muted">{en ? "When taking a break from coding, I enjoy Mobile Legends. Alucard is my most-played hero, with a highest title of Banten No.16 Alucard." : "Saat rehat dari coding, aku juga bermain Mobile Legends. Alucard jadi hero yang paling sering kumainkan, dengan gelar tertinggi Banten No.16 Alucard."}</p>
+        <p className="mt-3 text-sm text-muted">{en ? "Playing since 2017–2018." : "Bermain sejak 2017–2018."}</p>
         <dl className="mt-6 grid grid-cols-3 gap-3 border-y border-foreground/10 py-5">
           {stats.map(stat => <div key={stat.label}><dt className="text-xs text-muted">{stat.label}</dt><dd className="mt-2 text-lg font-semibold sm:text-2xl">{stat.value}</dd></div>)}
         </dl>
@@ -84,7 +86,12 @@ export default function Gaming() {
           <div className="flex flex-wrap gap-2" role="group" aria-label={en ? "Gaming screenshots" : "Screenshot gaming"}>
             {gallery.map((item, index) => <button key={item.file} type="button" aria-pressed={shot === index} aria-controls="gaming-screenshot" onClick={() => setShot(index)} className={"min-h-11 cursor-pointer rounded-full border px-4 py-2 text-xs transition-colors " + (shot === index ? "border-accent bg-accent/10 text-accent" : "border-foreground/15 text-muted hover:border-accent/50 hover:text-accent")}>{en ? item.en : item.id}</button>)}
           </div>
-          <figure id="gaming-screenshot" className="mt-5"><Image src={`/images/gaming/${gallery[shot].file}.jpg`} alt={`${en ? gallery[shot].en : gallery[shot].id} — Mobile Legends`} width={2400} height={1080} sizes="(max-width: 1024px) 100vw, 960px" className="h-auto w-full rounded-xl border border-foreground/10" /><figcaption className="mt-2 text-xs text-muted">{en ? "Screenshot capture. Data reflects the display at the time it was taken." : "Hasil screenshot, data mengikuti tampilan saat diambil."}</figcaption></figure>
+          <figure id="gaming-screenshot" className="mt-5"><Image src={`/images/gaming/${gallery[shot].file}.jpg`} alt={`${en ? gallery[shot].en : gallery[shot].id} — Mobile Legends`} width={gallery[shot].width} height={gallery[shot].height} sizes="(max-width: 1024px) 100vw, 960px" className="h-auto w-full rounded-xl border border-foreground/10" /><figcaption className="mt-2 text-xs text-muted">{en ? "Screenshot capture. Data reflects the display at the time it was taken." : "Hasil screenshot, data mengikuti tampilan saat diambil."}</figcaption></figure>
+          <div className="mt-6 rounded-xl border border-foreground/10 bg-surface p-4">
+            <h3 className="font-semibold text-accent">{en ? "2nd Place · Classmeeting E-Sport" : "Juara II · Classmeeting E-Sport"}</h3>
+            <p className="mt-2 text-sm text-muted">{en ? "With the XII IPA 8 team, PORAK SMAN 3 Pandeglang · 12–15 December 2022." : "Bersama tim XII IPA 8, PORAK SMAN 3 Pandeglang · 12–15 Desember 2022."}</p>
+            <a href="/documents/certificate-classmeeting-esport.pdf" target="_blank" rel="noopener noreferrer" className="mt-3 inline-flex min-h-11 items-center gap-2 text-sm text-accent hover:underline">{en ? "View certificate (PDF)" : "Lihat sertifikat (PDF)"}<ArrowIcon /></a>
+          </div>
           <h3 className="mt-7 text-lg font-semibold">{en ? "Most-played heroes" : "Hero yang paling sering dimainkan"}</h3>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {heroes.map(hero => <div key={hero.name} className="rounded-xl border border-foreground/10 bg-surface p-4"><h4 className="font-semibold text-accent">{hero.name}</h4><dl className="mt-3 space-y-2 text-xs"><div className="flex justify-between gap-2"><dt className="text-muted">{en ? "Matches" : "Pertandingan"}</dt><dd>{number(hero.matches)}</dd></div><div className="flex justify-between gap-2"><dt className="text-muted">Win rate</dt><dd>{en ? hero.rate : hero.rate.replace(".", ",")}</dd></div><div className="flex justify-between gap-2"><dt className="text-muted">Hero power</dt><dd>{number(hero.power)}</dd></div></dl></div>)}
