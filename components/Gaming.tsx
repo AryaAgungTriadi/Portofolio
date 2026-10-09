@@ -56,7 +56,7 @@ export default function Gaming() {
           <p className="text-xs uppercase tracking-[0.2em] text-white/65">Mobile Legends: Bang Bang</p>
           <p className="mt-6 text-sm text-white/75">{en ? "Highest rank" : "Rank tertinggi"}</p>
           <p className="mt-2 text-2xl font-semibold">Mythical Immortal</p>
-          <p className="mt-2 text-5xl font-semibold text-[#ffad77]">138 <span className="text-base font-medium text-white/75">{en ? "stars" : "bintang"}</span></p>
+          <div className="mt-3 flex items-center gap-3"><Image src="/images/gaming/immortal.png" alt="" width={396} height={391} className="h-16 w-16 shrink-0 object-contain" /><p className="text-5xl font-semibold text-accent">138 <span className="text-base font-medium text-white/75">{en ? "stars" : "bintang"}</span></p></div>
         </div>
       </div>
       <div className="p-7 sm:p-9">
@@ -66,7 +66,7 @@ export default function Gaming() {
         <dl className="mt-6 grid grid-cols-3 gap-3 border-y border-foreground/10 py-5">
           {stats.map(stat => <div key={stat.label}><dt className="text-xs text-muted">{stat.label}</dt><dd className="mt-2 text-lg font-semibold sm:text-2xl">{stat.value}</dd></div>)}
         </dl>
-        <p className="mt-3 text-xs text-muted">{en ? "All-season statistics · snapshot, not live data." : "Statistik semua season · berdasarkan screenshot, bukan data langsung."}</p>
+        <p className="mt-3 text-xs text-muted">{en ? "Screenshot capture. Data reflects the display at the time it was taken." : "Hasil screenshot, data mengikuti tampilan saat diambil."}</p>
         <button ref={trigger} type="button" aria-haspopup="dialog" onClick={() => { setShot(0); setOpen(true); }} className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">{en ? "Explore my gaming profile" : "Lihat profil gaming"}<ArrowIcon /></button>
       </div>
     </div>
@@ -84,7 +84,7 @@ export default function Gaming() {
           <div className="flex flex-wrap gap-2" role="group" aria-label={en ? "Gaming screenshots" : "Screenshot gaming"}>
             {gallery.map((item, index) => <button key={item.file} type="button" aria-pressed={shot === index} aria-controls="gaming-screenshot" onClick={() => setShot(index)} className={"min-h-11 cursor-pointer rounded-full border px-4 py-2 text-xs transition-colors " + (shot === index ? "border-accent bg-accent/10 text-accent" : "border-foreground/15 text-muted hover:border-accent/50 hover:text-accent")}>{en ? item.en : item.id}</button>)}
           </div>
-          <figure id="gaming-screenshot" className="mt-5"><Image src={`/images/gaming/${gallery[shot].file}.jpg`} alt={`${en ? gallery[shot].en : gallery[shot].id} — Mobile Legends`} width={2400} height={1080} sizes="(max-width: 1024px) 100vw, 960px" className="h-auto w-full rounded-xl border border-foreground/10" /><figcaption className="mt-2 text-xs text-muted">{en ? "Screenshot supplied by Arya. Figures reflect the captured screen." : "Screenshot dari Arya. Angka mengikuti tampilan saat diambil."}</figcaption></figure>
+          <figure id="gaming-screenshot" className="mt-5"><Image src={`/images/gaming/${gallery[shot].file}.jpg`} alt={`${en ? gallery[shot].en : gallery[shot].id} — Mobile Legends`} width={2400} height={1080} sizes="(max-width: 1024px) 100vw, 960px" className="h-auto w-full rounded-xl border border-foreground/10" /><figcaption className="mt-2 text-xs text-muted">{en ? "Screenshot capture. Data reflects the display at the time it was taken." : "Hasil screenshot, data mengikuti tampilan saat diambil."}</figcaption></figure>
           <h3 className="mt-7 text-lg font-semibold">{en ? "Most-played heroes" : "Hero yang paling sering dimainkan"}</h3>
           <div className="mt-4 grid gap-3 sm:grid-cols-3">
             {heroes.map(hero => <div key={hero.name} className="rounded-xl border border-foreground/10 bg-surface p-4"><h4 className="font-semibold text-accent">{hero.name}</h4><dl className="mt-3 space-y-2 text-xs"><div className="flex justify-between gap-2"><dt className="text-muted">{en ? "Matches" : "Pertandingan"}</dt><dd>{number(hero.matches)}</dd></div><div className="flex justify-between gap-2"><dt className="text-muted">Win rate</dt><dd>{en ? hero.rate : hero.rate.replace(".", ",")}</dd></div><div className="flex justify-between gap-2"><dt className="text-muted">Hero power</dt><dd>{number(hero.power)}</dd></div></dl></div>)}
@@ -92,7 +92,6 @@ export default function Gaming() {
           <dl className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {[{ label: "Savage", value: "61" }, { label: "Maniac", value: "416" }, { label: en ? "Best win streak" : "Win streak tertinggi", value: "15" }, { label: en ? "Skins collected" : "Koleksi skin", value: "687" }].map(stat => <div key={stat.label} className="rounded-xl border border-foreground/10 p-4"><dt className="text-xs text-muted">{stat.label}</dt><dd className="mt-2 text-xl font-semibold">{stat.value}</dd></div>)}
           </dl>
-          <p className="mt-5 text-xs leading-relaxed text-muted">{en ? "The statistics screen shows 13,870 matches, while the profile shows 14,019. The overview uses the statistics screen to keep the match count and win rate consistent." : "Halaman statistik mencatat 13.870 pertandingan, sedangkan profil menampilkan 14.019. Ringkasan memakai halaman statistik agar jumlah pertandingan dan win rate berasal dari sumber yang sama."}</p>
         </div>
       </>}
     </dialog>
