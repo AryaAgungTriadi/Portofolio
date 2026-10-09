@@ -26,7 +26,7 @@ export default function ContentPreview({ title, url, fallbackUrl, label, classNa
     };
   }, [open]);
   return <>
-    <button ref={trigger} type="button" aria-haspopup="dialog" className={className + " cursor-pointer"} onClick={() => setOpen(true)}>{label}<span aria-hidden="true">â†—</span></button>
+    <button ref={trigger} type="button" aria-haspopup="dialog" className={className + " cursor-pointer"} onClick={() => setOpen(true)}>{label}<svg aria-hidden="true" className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17 17 7M7 7h10v10" /></svg></button>
     <dialog ref={dialog} aria-labelledby={titleId} onCancel={() => setOpen(false)} onClick={event => {
       if (event.target !== event.currentTarget) return;
       const bounds = event.currentTarget.getBoundingClientRect();
