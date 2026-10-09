@@ -1,5 +1,7 @@
 "use client";
 
+import ArrowIcon from "./ArrowIcon";
+
 import { useLanguage } from "./Language";
 
 import Typewriter from "./Typewriter";
@@ -87,7 +89,7 @@ export default function Certificates() {
                 <span className="inline-flex rounded-full border border-accent/25 bg-accent/10 px-3 py-1 text-xs font-medium text-accent">{t(certificate.badge)}</span>
                 <h3 className="mt-3 text-xl leading-snug font-semibold">{t(certificate.title)}</h3>
                 <p className="mt-4 text-sm text-muted"><time dateTime={certificate.iso}>{t(certificate.date)}</time></p>
-                <button type="button" onClick={() => setSelected(certificate)} aria-haspopup="dialog" className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 text-sm text-accent hover:underline">{t("Lihat detail")}<span aria-hidden="true">↗</span></button>
+                <button type="button" onClick={() => setSelected(certificate)} aria-haspopup="dialog" className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 text-sm text-accent hover:underline">{t("Lihat detail")}<ArrowIcon /></button>
               </div>
             </article>
           ))}

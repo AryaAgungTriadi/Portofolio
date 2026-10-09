@@ -1,5 +1,7 @@
 "use client";
 
+import ArrowIcon from "./ArrowIcon";
+
 import { useLanguage } from "./Language";
 
 import Typewriter from "./Typewriter";
@@ -40,7 +42,7 @@ export default function Achievements() {
             <ContentPreview title={t("Lomba Video Jambore Remaja")} url="https://drive.google.com/file/d/1FObgb4wNlVzGMDOU7Z4ZOJl8EzrxmETu/preview" fallbackUrl="https://drive.google.com/file/d/1FObgb4wNlVzGMDOU7Z4ZOJl8EzrxmETu/view" label={t("Tonton Video")} video className="mt-7 inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover" />
           </div>
         </article>
-        <a href="#certificates" className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm text-accent hover:underline">{t("Lihat sertifikat di bagian Sertifikat")}<span aria-hidden="true">↓</span></a>
+        <a href="#certificates" className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm text-accent hover:underline">{t("Lihat sertifikat di bagian Sertifikat")}<ArrowIcon direction="down" /></a>
         <Gaming />
       </div>
     </section>

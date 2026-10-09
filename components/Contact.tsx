@@ -1,5 +1,8 @@
 "use client";
 
+import SocialIcon from "./SocialIcon";
+import ArrowIcon from "./ArrowIcon";
+
 import { useState } from "react";
 import { useLanguage } from "./Language";
 
@@ -20,14 +23,14 @@ export default function Contact() {
             try { await navigator.clipboard.writeText("aryaagungtriadi22@gmail.com"); setCopyStatus(language === "en" ? "Email copied!" : "Email disalin!"); }
             catch { setCopyStatus(language === "en" ? "Could not copy. Select the email and copy it manually." : "Belum bisa menyalin. Pilih email lalu salin secara manual."); }
           }} title={language === "en" ? "Copy email" : "Salin email"} className="inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-lg text-muted transition-colors hover:bg-accent/10 hover:text-accent"><svg aria-hidden="true" className="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/></svg></button></div><p role="status" aria-live="polite" className="text-xs text-accent">{copyStatus}</p></div>
-          <div><p className="text-xs uppercase tracking-[0.15em] text-muted">{t("Telepon")}</p><a href="https://wa.me/6283841327394" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +62 838 4132 7394" className="mt-2 inline-flex min-h-11 items-center text-lg hover:text-accent">+62 838 4132 7394 <span aria-hidden="true" className="ml-2 text-xs text-accent">↗ WhatsApp</span></a></div>
+          <div><p className="text-xs uppercase tracking-[0.15em] text-muted">{t("Telepon")}</p><a href="https://wa.me/6283841327394" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp +62 838 4132 7394" className="mt-2 inline-flex min-h-11 items-center text-lg hover:text-accent">+62 838 4132 7394 <span aria-hidden="true" className="ml-2 inline-flex items-center gap-1 text-xs text-accent"><ArrowIcon /> WhatsApp</span></a></div>
           <div><p className="text-xs uppercase tracking-[0.15em] text-muted">{t("Lokasi")}</p><p className="mt-3 text-sm">Labuan, Pandeglang, Banten</p></div>
           <div className="border-t border-foreground/10 pt-5">
             <p className="text-xs uppercase tracking-[0.15em] text-muted">{t("Profil")}</p>
             <div className="mt-3 flex flex-wrap gap-3">
-              <a href="https://github.com/AryaAgungTriadi" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-foreground/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">GitHub <svg aria-hidden="true" className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg><span className="sr-only">{t("(tab baru)")}</span></a>
-              <a href="https://www.linkedin.com/in/aryaagungtriadi" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-foreground/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">LinkedIn <svg aria-hidden="true" className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg><span className="sr-only">{t("(tab baru)")}</span></a>
-              <a href="https://www.instagram.com/aryaagungtriadii/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-foreground/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">Instagram <svg aria-hidden="true" className="size-4 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17 17 7M7 7h10v10"/></svg><span className="sr-only">{t("(tab baru)")}</span></a>
+              <a href="https://github.com/AryaAgungTriadi" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-foreground/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">GitHub <SocialIcon name="github" /><span className="sr-only">{t("(tab baru)")}</span></a>
+              <a href="https://www.linkedin.com/in/aryaagungtriadi" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-foreground/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">LinkedIn <SocialIcon name="linkedin" /><span className="sr-only">{t("(tab baru)")}</span></a>
+              <a href="https://www.instagram.com/aryaagungtriadii/" target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-lg border border-foreground/15 px-4 py-2 text-sm transition-colors hover:border-accent/50 hover:text-accent">Instagram <SocialIcon name="instagram" /><span className="sr-only">{t("(tab baru)")}</span></a>
             </div>
           </div>
         </address>

@@ -1,5 +1,7 @@
 "use client";
 
+import ArrowIcon from "./ArrowIcon";
+
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "./Language";
@@ -65,7 +67,7 @@ export default function Gaming() {
           {stats.map(stat => <div key={stat.label}><dt className="text-xs text-muted">{stat.label}</dt><dd className="mt-2 text-lg font-semibold sm:text-2xl">{stat.value}</dd></div>)}
         </dl>
         <p className="mt-3 text-xs text-muted">{en ? "All-season statistics · snapshot, not live data." : "Statistik semua season · berdasarkan screenshot, bukan data langsung."}</p>
-        <button ref={trigger} type="button" aria-haspopup="dialog" onClick={() => { setShot(0); setOpen(true); }} className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">{en ? "Explore my gaming profile" : "Lihat profil gaming"}<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5"><path d="M7 17 17 7M7 7h10v10" /></svg></button>
+        <button ref={trigger} type="button" aria-haspopup="dialog" onClick={() => { setShot(0); setOpen(true); }} className="mt-5 inline-flex min-h-11 cursor-pointer items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent">{en ? "Explore my gaming profile" : "Lihat profil gaming"}<ArrowIcon /></button>
       </div>
     </div>
     <dialog ref={dialog} aria-labelledby="gaming-dialog-title" onCancel={() => setOpen(false)} onClick={event => {

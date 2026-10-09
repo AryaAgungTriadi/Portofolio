@@ -1,5 +1,7 @@
 "use client";
 
+import ArrowIcon from "./ArrowIcon";
+
 import Image from "next/image";
 import { useLanguage } from "./Language";
 
@@ -61,7 +63,7 @@ export default function Projects() {
                 </ul>
                 <div className="mt-7 flex flex-wrap gap-3">
                   <ContentPreview title={project.name} url={project.live} fallbackUrl={project.live} label={t("Lihat Proyek")} className="inline-flex min-h-11 items-center gap-3 rounded-full bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition-colors hover:bg-accent-hover" />
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent" aria-label={`GitHub ${project.name} ${t("(tab baru)")}`}>GitHub <span aria-hidden="true">↗</span></a>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center gap-3 rounded-full border border-foreground/20 px-5 py-3 text-sm font-semibold transition-colors hover:border-accent hover:text-accent" aria-label={`GitHub ${project.name} ${t("(tab baru)")}`}>GitHub <ArrowIcon /></a>
                 </div>
               </div>
             </article>
